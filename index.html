@@ -2,287 +2,986 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport"
- content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="theme-color" content="#102f55">
+ content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+<meta name="theme-color" content="#173e6c">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mes stages">
+
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="icon" type="image/png" href="./apple-touch-icon.png">
+
 <title>Mes stages — Thibault</title>
+
 <style>
-:root{
- --blue:#173e6c;--navy:#102843;--ink:#142237;--muted:#68768a;
- --bg:#f3f6fa;--line:#e2e8f0;--soft:#e9f0f9;--green:#20745b;
- --radius:22px;--shadow:0 12px 36px #18395c0d
+:root {
+  --blue: #173e6c;
+  --navy: #102843;
+  --ink: #142237;
+  --muted: #68768a;
+  --bg: #f3f6fa;
+  --line: #e2e8f0;
+  --soft: #e9f0f9;
+  --green: #20745b;
+  --radius: 22px;
+  --shadow: 0 12px 36px #18395c0d;
 }
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{touch-action:pan-y}
-body{
- margin:0;background:var(--bg);color:var(--ink);
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
- font-size:15px;line-height:1.5;overscroll-behavior-y:none
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
-button,input,select{font:inherit}
-button,a,input{touch-action:manipulation}
-button,a{cursor:pointer}
-button{border:0}
-a{color:var(--blue)}
-button:focus-visible,a:focus-visible,input:focus-visible{
- outline:3px solid #679ad4;outline-offset:3px
+
+html {
+  touch-action: pan-y;
 }
-button:disabled{opacity:.5;cursor:wait}
-button{transition:transform .2s,background .2s,box-shadow .2s}
-button:active,.button:active{transform:scale(.96)}
-[hidden]{display:none!important}
-.app{max-width:740px;margin:auto;padding:24px 18px 120px}
-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{
- display:grid;place-items:center;width:46px;height:46px;border-radius:16px;
- color:white;background:var(--navy);font-weight:750;letter-spacing:-1px
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  overscroll-behavior-y: none;
 }
-.eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-h1{font-size:24px;letter-spacing:-1px;line-height:1.15;margin:3px 0}
-h2{font-size:24px;letter-spacing:-.7px;margin:0 0 8px}
-h3{font-size:16px;margin:20px 0 8px}
-p{margin:8px 0 14px}
-small,.muted{color:var(--muted)}
-.small{font-size:12px}
-.pill{padding:7px 10px;background:white;border-radius:30px;font-size:11px}
-.hero{
- border-radius:27px;overflow:hidden;background:var(--navy);
- box-shadow:var(--shadow);position:relative
+
+button, input, select {
+  font: inherit;
 }
-.hero iframe{display:block;width:100%;height:205px;border:0}
-.hero-footer{padding:15px 18px;color:white;display:flex;justify-content:space-between;align-items:center}
-.hero-footer small{color:#c0d0e2}
-.hero-footer strong{display:block;font-size:15px}
-.icon-button{width:40px;height:40px;border-radius:50%;background:#ffffff1c;color:inherit}
-.documents{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0 22px}
-.light-button,.button{
- display:inline-flex;align-items:center;justify-content:center;gap:8px;
- padding:11px 15px;border-radius:13px;background:white;color:var(--navy);
- text-decoration:none;font-weight:650;font-size:13px;min-height:44px
+
+button, a, input {
+  touch-action: manipulation;
 }
-.button.primary{background:var(--blue);color:white}
-.button.secondary{background:var(--soft);color:var(--blue)}
-.button.wide{width:100%}
-.section-heading{display:flex;align-items:center;justify-content:space-between;margin:22px 0 12px}
-.section-heading h2{font-size:20px;margin:0}
-.card{
- display:flex;align-items:center;gap:12px;background:white;border:1px solid white;
- border-radius:var(--radius);padding:14px;margin-bottom:10px;box-shadow:var(--shadow);
- animation:arrive .48s cubic-bezier(.2,.8,.2,1) both;
- animation-delay:var(--delay,0ms)
+
+button, a {
+  cursor: pointer;
 }
-.card.complete{background:#edf5f2;border-color:#d5e8df}
-.check{
- flex-shrink:0;width:29px;height:29px;border:1.8px solid #b8c7da;
- background:transparent;border-radius:50%;display:grid;place-items:center;
- color:transparent;transition:all .25s
+
+button {
+  border: 0;
+  transition: transform .2s, background .2s, box-shadow .2s;
 }
-.check[aria-pressed=true]{
- color:white;background:var(--green);border-color:var(--green);
- animation:pop .32s ease
+
+button:active, .button:active {
+  transform: scale(.96);
 }
-.check svg{width:17px;fill:none;stroke:currentColor;stroke-width:2.6}
-.company-open{min-width:0;flex:1;text-align:left;background:none;color:inherit;padding:4px 0}
-.company-open strong{display:block;font-size:15px}
-.company-open span{display:block;font-size:11px;color:var(--muted);margin-top:4px}
-.chevron{color:#8da0b7;font-size:22px}
-.tag{display:inline-block;padding:3px 8px;border-radius:7px;background:var(--soft);color:var(--blue);font-size:10px}
-.card.complete .tag{background:#dbece4;color:var(--green)}
-details{margin-top:24px}
-summary{cursor:pointer;color:var(--muted);font-size:13px;padding:10px 0}
-nav{
- position:fixed;bottom:0;left:0;right:0;z-index:10;
- background:#ffffffed;backdrop-filter:blur(22px);
- border-top:1px solid #e3e9f0;padding:10px 16px max(12px,env(safe-area-inset-bottom))
+
+button:disabled {
+  opacity: .5;
+  cursor: wait;
 }
-.nav-inner{max-width:500px;margin:auto;display:flex;gap:8px}
-nav button{
- flex:1;background:transparent;color:var(--muted);padding:12px 8px;
- border-radius:15px;font-weight:650;font-size:12px
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 3px solid #679ad4;
+  outline-offset: 3px;
 }
-nav button.active{background:var(--navy);color:white}
-.panel{animation:arrive .35s ease}
-.box{background:white;padding:20px;border-radius:var(--radius);box-shadow:var(--shadow);margin:14px 0}
-.select-row{
- display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #edf0f5
+
+a {
+  color: var(--blue);
 }
-.select-row:last-child{border-bottom:0}
-.select-row input{width:21px;height:21px;accent-color:var(--blue);flex-shrink:0}
-.select-row span{flex:1}
-.select-row small{display:block;font-size:11px}
-.notice{font-size:12px;color:var(--muted);line-height:1.6}
-.route-stop{
- display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)
+
+[hidden] {
+  display: none !important;
 }
-.route-stop .number{
- width:29px;height:29px;border-radius:10px;background:var(--soft);
- color:var(--blue);display:grid;place-items:center;flex-shrink:0;font-weight:700
+
+.app {
+  max-width: 740px;
+  margin: auto;
+  padding: max(24px, env(safe-area-inset-top)) 18px 120px;
 }
-.route-stop .name{flex:1}
-.route-stop a{font-size:12px;text-decoration:none;font-weight:700}
-.suggestion{
- display:flex;gap:10px;align-items:center;margin-top:10px;
- padding:12px;background:var(--soft);border-radius:15px
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 22px;
 }
-.suggestion span{flex:1}
-.suggestion small{display:block}
-.suggestion button{background:white;color:var(--blue);border-radius:10px;padding:9px 12px}
-dialog{
- width:min(720px,100%);max-height:92dvh;max-width:100%;padding:0;
- border:0;border-radius:28px 28px 0 0;margin:auto auto 0;
- color:var(--ink);background:var(--bg);
- box-shadow:0 -20px 80px #10284325
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
 }
-dialog::backdrop{background:#07162688;backdrop-filter:blur(5px)}
-dialog[open]{animation:sheetIn .35s cubic-bezier(.16,1,.3,1)}
-.sheet-bar{
- position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;
- padding:16px 20px;background:#f3f6faf5;backdrop-filter:blur(15px);
- border-bottom:1px solid var(--line)
+
+.logo {
+  display: block;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  object-fit: cover;
+  background: var(--blue);
+  box-shadow: 0 5px 15px #173e6c20;
 }
-.sheet-body{padding:8px 22px max(28px,env(safe-area-inset-bottom))}
-.close{background:#e4ebf3;border-radius:50%;width:36px;height:36px;color:var(--navy);font-size:22px}
-.quote{border-left:3px solid #7f9fc4;padding:3px 0 3px 16px;color:#243a54}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
-.toast{
- position:fixed;bottom:100px;left:50%;transform:translateX(-50%);z-index:50;
- width:max-content;max-width:90%;background:var(--navy);color:white;
- padding:12px 18px;border-radius:15px;font-size:12px;box-shadow:0 10px 40px #0002
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-#paper{display:none}
-.doc{
- color:#17283b;background:white;font-family:Arial,sans-serif;
- line-height:1.45;font-size:10pt;padding:12mm;position:relative
+
+h1 {
+  font-size: 24px;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin: 3px 0;
 }
-.doc-header{
- border-top:5px solid #244c78;padding-top:20px;display:flex;
- justify-content:space-between;gap:20px;margin-bottom:18px
+
+h2 {
+  font-size: 24px;
+  letter-spacing: -.7px;
+  margin: 0 0 8px;
 }
-.doc h1{font-size:23pt;color:#183b64;letter-spacing:-.6px;line-height:1.1}
-.doc .subtitle{font-size:10pt;letter-spacing:.8px;margin-top:10px;color:#345d88}
-.doc .contact{font-size:9pt;color:#506174}
-.doc h2{
- font-size:10pt;letter-spacing:1px;text-transform:uppercase;
- color:#244c78;margin:19px 0 7px;padding-bottom:5px;border-bottom:1px solid #dde6ef
+
+h3 {
+  font-size: 16px;
+  margin: 20px 0 8px;
 }
-.doc p{margin:0 0 9px}
-.doc .photo{width:29mm;height:39mm;object-fit:cover;object-position:center;border:3px solid #345d88;border-radius:5px}
-.doc .columns{display:grid;grid-template-columns:1.65fr 1fr;gap:22px}
-.doc .target{color:#345d88;font-size:9pt;margin-top:7px}
-.doc.letter{font-size:11pt;line-height:1.7}
-.doc.letter .recipient{margin:30px 0;text-align:right;font-size:10pt}
-.doc.letter .letter-body p{margin-bottom:20px}
-.doc .signature{margin-top:30px;font-weight:bold;color:#244c78}
-.preview{overflow:hidden;border-radius:15px;box-shadow:var(--shadow);margin:15px 0}
-.preview .doc{padding:20px;font-size:11px}
-.preview .doc h1{font-size:23px}
-.preview .doc h2{font-size:11px}
-.preview .doc .photo{width:70px;height:94px}
-.preview .doc .columns{gap:14px}
-.preview .doc .contact{font-size:10px}
-@keyframes arrive{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pop{50%{transform:scale(1.18)}}
-@keyframes sheetIn{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:translateY(0)}}
-@media(min-width:700px){
- dialog{margin:auto;border-radius:28px;max-height:88dvh}
- .hero iframe{height:250px}
+
+p {
+  margin: 8px 0 14px;
 }
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+
+small, .muted {
+  color: var(--muted);
 }
-@media print{
- @page{size:A4;margin:10mm}
- body{background:white}
- body> *:not(#paper){display:none!important}
- #paper{display:block!important}
- .doc{
-  width:100%;padding:3mm;break-after:page;page-break-after:always;
-  print-color-adjust:exact;-webkit-print-color-adjust:exact
- }
- .doc:last-child{break-after:auto;page-break-after:auto}
- .doc-header,.doc h2,.doc p{break-inside:avoid}
- .doc h2{break-after:avoid}
+
+.small {
+  font-size: 12px;
+}
+
+.pill {
+  padding: 7px 10px;
+  background: white;
+  border-radius: 30px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.hero {
+  border-radius: 27px;
+  overflow: hidden;
+  background: var(--navy);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.hero iframe {
+  display: block;
+  width: 100%;
+  height: 205px;
+  border: 0;
+}
+
+.hero-footer {
+  padding: 15px 18px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-footer small {
+  color: #c0d0e2;
+}
+
+.hero-footer strong {
+  display: block;
+  font-size: 15px;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff1c;
+  color: inherit;
+  flex-shrink: 0;
+  font-size: 21px;
+}
+
+.documents {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 17px 0 22px;
+}
+
+.light-button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 15px;
+  border-radius: 13px;
+  background: white;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 650;
+  font-size: 13px;
+  min-height: 44px;
+}
+
+.button.primary {
+  background: var(--blue);
+  color: white;
+}
+
+.button.secondary {
+  background: var(--soft);
+  color: var(--blue);
+}
+
+.button.wide {
+  width: 100%;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 22px 0 12px;
+}
+
+.section-heading h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.section-heading small {
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid white;
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+  animation: arrive .48s cubic-bezier(.2, .8, .2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.card.complete {
+  background: #edf5f2;
+  border-color: #d5e8df;
+}
+
+.check {
+  flex-shrink: 0;
+  width: 31px;
+  height: 31px;
+  border: 1.8px solid #b8c7da;
+  background: transparent;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: transparent;
+  transition: all .25s;
+}
+
+.check[aria-pressed="true"] {
+  color: white;
+  background: var(--green);
+  border-color: var(--green);
+  animation: pop .32s ease;
+}
+
+.check svg {
+  width: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+}
+
+.company-open {
+  min-width: 0;
+  flex: 1;
+  text-align: left;
+  background: none;
+  color: inherit;
+  padding: 4px 0;
+}
+
+.company-open strong {
+  display: block;
+  font-size: 15px;
+}
+
+.company-open span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.chevron {
+  color: #8da0b7;
+  font-size: 22px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 7px;
+  background: var(--soft);
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.card.complete .tag {
+  background: #dbece4;
+  color: var(--green);
+}
+
+details {
+  margin-top: 24px;
+}
+
+summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 10px 0;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: #ffffffed;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-top: 1px solid #e3e9f0;
+  padding: 10px 16px max(12px, env(safe-area-inset-bottom));
+}
+
+.nav-inner {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  gap: 8px;
+}
+
+nav button {
+  flex: 1;
+  background: transparent;
+  color: var(--muted);
+  padding: 12px 8px;
+  border-radius: 15px;
+  font-weight: 650;
+  font-size: 12px;
+  min-height: 46px;
+}
+
+nav button.active {
+  background: var(--navy);
+  color: white;
+}
+
+.panel {
+  animation: arrive .35s ease;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 14px 0;
+}
+
+.select-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.select-row:last-child {
+  border-bottom: 0;
+}
+
+.select-row input {
+  width: 21px;
+  height: 21px;
+  accent-color: var(--blue);
+  flex-shrink: 0;
+}
+
+.select-row span {
+  flex: 1;
+}
+
+.select-row small {
+  display: block;
+  font-size: 11px;
+}
+
+.notice {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.route-stop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.route-stop .number {
+  width: 29px;
+  height: 29px;
+  border-radius: 10px;
+  background: var(--soft);
+  color: var(--blue);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.route-stop .name {
+  flex: 1;
+  min-width: 0;
+}
+
+.route-stop .name strong {
+  font-size: 13px;
+}
+
+.route-stop .name small {
+  font-size: 11px;
+}
+
+.route-stop a {
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.suggestion {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+  padding: 12px;
+  background: var(--soft);
+  border-radius: 15px;
+}
+
+.suggestion span {
+  flex: 1;
+  font-size: 13px;
+}
+
+.suggestion small {
+  display: block;
+  font-size: 11px;
+}
+
+.suggestion button {
+  background: white;
+  color: var(--blue);
+  border-radius: 10px;
+  padding: 9px 12px;
+  min-height: 42px;
+  font-size: 12px;
+}
+
+dialog {
+  width: min(720px, 100%);
+  max-height: 92dvh;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 28px 28px 0 0;
+  margin: auto auto 0;
+  color: var(--ink);
+  background: var(--bg);
+  box-shadow: 0 -20px 80px #10284325;
+}
+
+dialog::backdrop {
+  background: #07162688;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+dialog[open] {
+  animation: sheetIn .35s cubic-bezier(.16, 1, .3, 1);
+}
+
+.sheet-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px 20px;
+  background: #f3f6faf5;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--line);
+}
+
+.sheet-body {
+  padding: 8px 22px max(28px, env(safe-area-inset-bottom));
+}
+
+.close {
+  background: #e4ebf3;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  color: var(--navy);
+  font-size: 23px;
+  flex-shrink: 0;
+}
+
+.quote {
+  border-left: 3px solid #7f9fc4;
+  padding: 3px 0 3px 16px;
+  color: #243a54;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  width: max-content;
+  max-width: 90%;
+  background: var(--navy);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 15px;
+  font-size: 12px;
+  box-shadow: 0 10px 40px #0002;
+}
+
+#paper {
+  display: none;
+}
+
+/* Documents imprimables */
+
+.doc {
+  color: #17283b;
+  background: white;
+  font-family: Arial, sans-serif;
+  line-height: 1.45;
+  font-size: 9.5pt;
+  padding: 12mm;
+  position: relative;
+}
+
+.doc-header {
+  border-top: 5px solid #244c78;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.doc h1 {
+  font-size: 23pt;
+  color: #183b64;
+  letter-spacing: -.6px;
+  line-height: 1.1;
+}
+
+.doc .subtitle {
+  font-size: 10pt;
+  letter-spacing: .8px;
+  margin-top: 10px;
+  color: #345d88;
+}
+
+.doc .contact {
+  font-size: 9pt;
+  color: #506174;
+}
+
+.doc h2 {
+  font-size: 10pt;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #244c78;
+  margin: 18px 0 7px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dde6ef;
+}
+
+.doc p {
+  margin: 0 0 9px;
+}
+
+.doc .photo {
+  width: 29mm;
+  height: 39mm;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid #345d88;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.doc .columns {
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 22px;
+}
+
+.doc .target {
+  color: #345d88;
+  font-size: 9pt;
+  margin-top: 7px;
+}
+
+.doc.letter {
+  font-size: 11pt;
+  line-height: 1.7;
+}
+
+.doc.letter .recipient {
+  margin: 30px 0;
+  text-align: right;
+  font-size: 10pt;
+}
+
+.doc.letter .letter-body p {
+  margin-bottom: 20px;
+}
+
+.doc .signature {
+  margin-top: 30px;
+  font-weight: bold;
+  color: #244c78;
+}
+
+.preview {
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  margin: 15px 0;
+}
+
+.preview .doc {
+  padding: 20px;
+  font-size: 11px;
+}
+
+.preview .doc h1 {
+  font-size: 23px;
+}
+
+.preview .doc h2 {
+  font-size: 11px;
+}
+
+.preview .doc .photo {
+  width: 70px;
+  height: 94px;
+}
+
+.preview .doc .columns {
+  gap: 14px;
+}
+
+.preview .doc .contact {
+  font-size: 10px;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(13px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+@keyframes sheetIn {
+  from {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 700px) {
+  dialog {
+    margin: auto;
+    border-radius: 28px;
+    max-height: 88dvh;
+  }
+
+  .hero iframe {
+    height: 250px;
+  }
+}
+
+@media (max-width: 360px) {
+  .app {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .pill {
+    font-size: 9px;
+    padding: 6px 8px;
+  }
+
+  .eyebrow {
+    letter-spacing: 1px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  body {
+    background: white;
+  }
+
+  body > *:not(#paper) {
+    display: none !important;
+  }
+
+  #paper {
+    display: block !important;
+  }
+
+  .doc {
+    width: 100%;
+    padding: 3mm;
+    break-after: page;
+    page-break-after: always;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .doc:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .doc-header, .doc h2, .doc p {
+    break-inside: avoid;
+  }
+
+  .doc h2 {
+    break-after: avoid;
+  }
 }
 </style>
 </head>
+
 <body>
+
 <main class="app">
- <header>
-  <div class="brand">
-   <div class="logo">TD</div>
-   <div><div class="eyebrow">Thibault Dessaint</div><h1>Mes stages.</h1></div>
+
+  <header>
+    <div class="brand">
+      <img
+        class="logo"
+        src="./apple-touch-icon.png"
+        alt="Mes stages"
+        width="48"
+        height="48">
+
+      <div>
+        <div class="eyebrow">Thibault Dessaint</div>
+        <h1>Mes stages.</h1>
+      </div>
+    </div>
+
+    <div class="pill">23–27 nov. 2026</div>
+  </header>
+
+  <section class="hero">
+    <iframe
+      title="Carte Google Maps de Fréjus"
+      src="https://maps.google.com/maps?q=Frejus%20France&z=12&output=embed"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <div class="hero-footer">
+      <div>
+        <strong>Une visite à la fois.</strong>
+        <small>Fréjus · Saint-Raphaël · Cannes</small>
+      </div>
+
+      <button
+        class="icon-button"
+        id="mapRoute"
+        aria-label="Ouvrir l’optimisation des trajets">
+        ↗
+      </button>
+    </div>
+  </section>
+
+  <div class="documents">
+    <button class="light-button" id="allCV">CV · 16</button>
+    <button class="light-button" id="allLetters">Lettres · 16</button>
+    <button class="light-button" id="photoButton">Photo des CV</button>
+
+    <input
+      id="photoFile"
+      type="file"
+      accept="image/jpeg,image/png"
+      hidden>
   </div>
-  <div class="pill">23–27 nov. 2026</div>
- </header>
 
- <section class="hero">
-  <iframe title="Carte Google Maps de Fréjus"
-   src="https://maps.google.com/maps?q=Frejus%20France&z=12&output=embed"
-   loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  <div class="hero-footer">
-   <div><strong>Une visite à la fois.</strong><small>Fréjus · Saint-Raphaël · Cannes</small></div>
-   <button class="icon-button" id="mapRoute" aria-label="Ouvrir l’optimisation des trajets">↗</button>
-  </div>
- </section>
+  <section id="stagesPanel" class="panel">
+    <div class="section-heading">
+      <h2>Les prochaines visites</h2>
+      <small id="progress"></small>
+    </div>
 
- <div class="documents">
-  <button class="light-button" id="allCV">CV · 16</button>
-  <button class="light-button" id="allLetters">Lettres · 16</button>
-  <button class="light-button" id="photoButton">Photo des CV</button>
-  <input id="photoFile" type="file" accept="image/jpeg,image/png" hidden>
- </div>
+    <div id="companyList"></div>
 
- <section id="stagesPanel" class="panel">
-  <div class="section-heading"><h2>Les prochaines visites</h2><small id="progress"></small></div>
-  <div id="companyList"></div>
-  <details>
-   <summary>Réponses négatives · Porsche, Audi, Lamborghini</summary>
-   <div id="archiveList"></div>
-  </details>
- </section>
+    <details>
+      <summary>
+        Réponses négatives · Porsche, Audi, Lamborghini
+      </summary>
+      <div id="archiveList"></div>
+    </details>
+  </section>
 
- <section id="routePanel" class="panel" hidden>
-  <div class="section-heading"><h2>Où vas-tu aujourd’hui ?</h2></div>
-  <p class="notice">
-   Choisis tes visites. L’application propose un ordre et des entreprises
-   supplémentaires qui occasionnent peu de détour.
-  </p>
-  <div class="box">
-   <div id="routeChoices"></div>
-  </div>
-  <button id="calculate" class="button primary wide">Calculer depuis ma position</button>
-  <p class="notice">
-   La position est demandée uniquement au calcul, puis transmise au service de
-   calcul routier OSRM. Estimations sans trafic, stationnement ni durée des
-   visites. Vérifie les horaires avant le départ. Fin du parcours à la dernière visite.
-  </p>
-  <p id="routeMessage" role="status" class="notice"></p>
-  <div id="routeResult"></div>
- </section>
+  <section id="routePanel" class="panel" hidden>
+    <div class="section-heading">
+      <h2>Où vas-tu aujourd’hui ?</h2>
+    </div>
+
+    <p class="notice">
+      Choisis tes visites. L’application propose un ordre et des entreprises
+      supplémentaires qui occasionnent peu de détour.
+    </p>
+
+    <div class="box">
+      <div id="routeChoices"></div>
+    </div>
+
+    <button id="calculate" class="button primary wide">
+      Calculer depuis ma position
+    </button>
+
+    <p class="notice">
+      La position est demandée uniquement au calcul, puis transmise au service
+      de calcul routier OSRM. Estimations sans trafic, stationnement ni durée
+      des visites. Vérifie les horaires avant le départ.
+      Fin du parcours à la dernière visite.
+    </p>
+
+    <p id="routeMessage" role="status" class="notice"></p>
+
+    <div id="routeResult"></div>
+  </section>
+
 </main>
 
 <nav aria-label="Navigation principale">
- <div class="nav-inner">
-  <button id="stagesTab" class="active" aria-current="page">☷ &nbsp; Mes stages</button>
-  <button id="routeTab">↗ &nbsp; Optimisation trajet</button>
- </div>
+  <div class="nav-inner">
+    <button id="stagesTab" class="active" aria-current="page">
+      ☷ &nbsp; Mes stages
+    </button>
+
+    <button id="routeTab">
+      ↗ &nbsp; Optimisation trajet
+    </button>
+  </div>
 </nav>
 
-<dialog id="detailDialog">
- <div class="sheet-bar"><strong id="detailHeading"></strong><button class="close" aria-label="Fermer" id="closeDetail">×</button></div>
- <div id="detailBody" class="sheet-body"></div>
+<dialog id="detailDialog" aria-labelledby="detailHeading">
+  <div class="sheet-bar">
+    <strong id="detailHeading"></strong>
+
+    <button class="close" aria-label="Fermer" id="closeDetail">
+      ×
+    </button>
+  </div>
+
+  <div id="detailBody" class="sheet-body"></div>
 </dialog>
 
-<dialog id="documentsDialog">
- <div class="sheet-bar"><strong id="documentsHeading"></strong><button class="close" aria-label="Fermer" id="closeDocuments">×</button></div>
- <div class="sheet-body">
-  <p id="documentSummary" class="notice"></p>
-  <button class="button primary wide" id="printDocuments">Imprimer / enregistrer en PDF</button>
-  <div id="documentPreview" class="preview"></div>
- </div>
+<dialog id="documentsDialog" aria-labelledby="documentsHeading">
+  <div class="sheet-bar">
+    <strong id="documentsHeading"></strong>
+
+    <button class="close" aria-label="Fermer" id="closeDocuments">
+      ×
+    </button>
+  </div>
+
+  <div class="sheet-body">
+    <p id="documentSummary" class="notice"></p>
+
+    <button class="button primary wide" id="printDocuments">
+      Imprimer / enregistrer en PDF
+    </button>
+
+    <div id="documentPreview" class="preview"></div>
+  </div>
 </dialog>
 
 <div id="toast" class="toast" role="status" hidden></div>
@@ -292,599 +991,1665 @@ dialog[open]{animation:sheetIn .35s cubic-bezier(.16,1,.3,1)}
 "use strict";
 
 /*
- Application autonome. Les CV et lettres sont composés dans le navigateur.
- Les anciens CV s’ouvrent dans ChatGPT et nécessitent le compte propriétaire.
- La photo reste sur cet appareil et n’est pas envoyée aux services de trajet.
- Ne pas publier ses coordonnées et documents personnels sur un dépôt public.
+  Les documents sont composés dans le navigateur.
+  Les anciens CV s’ouvrent avec le compte ChatGPT propriétaire.
+
+  La photo et les cases cochées sont enregistrées sur cet appareil.
+  La photo n’est jamais envoyée aux services de trajet.
+
+  Les calculs de trajet ne prennent pas en compte le trafic en direct.
 */
 
-const KEY="thibault-stages-v4";
-const $=id=>document.getElementById(id);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
-const today=()=>{
- const d=new Date();
- return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+const KEY = "thibault-stages-v4";
+
+const $ = id => document.getElementById(id);
+
+const esc = value => String(value ?? "").replace(/[&<>"']/g, character => ({
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;"
+}[character]));
+
+function today() {
+  const date = new Date();
+
+  return [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, "0"),
+    String(date.getDate()).padStart(2, "0")
+  ].join("-");
+}
+
+let state = {
+  done: {},
+  days: {},
+  photo: "",
+  geo: {}
 };
-let state={done:{},days:{},photo:"",geo:{}};
-try{
- const saved=JSON.parse(localStorage.getItem(KEY)||"null");
- if(saved&&typeof saved==="object") state={...state,...saved};
-}catch{}
-state.done=state.done||{};
-state.days=state.days||{};
-state.geo=state.geo||{};
-const DAY=today();
-let selected=new Set(state.days[DAY]||[]);
-let routeVersion=0;
+
+try {
+  const saved = JSON.parse(localStorage.getItem(KEY) || "null");
+
+  if (saved && typeof saved === "object") {
+    state = { ...state, ...saved };
+  }
+} catch {}
+
+state.done = state.done || {};
+state.days = state.days || {};
+state.geo = state.geo || {};
+
+const DAY = today();
+
+let selected = new Set(
+  Array.isArray(state.days[DAY]) ? state.days[DAY] : []
+);
+
+let routeVersion = 0;
 let toastTimer;
-let printingHTML="";
+let printingHTML = "";
 
-function toast(message){
- $("toast").textContent=message;
- $("toast").hidden=false;
- clearTimeout(toastTimer);
- toastTimer=setTimeout(()=>$("toast").hidden=true,4200);
-}
-function save(){
- state.days[DAY]=[...selected];
- try{localStorage.setItem(KEY,JSON.stringify(state))}
- catch{toast("Mémoire du navigateur pleine ou indisponible. Les modifications restent actives dans cette page.")}
+function toast(message) {
+  $("toast").textContent = message;
+  $("toast").hidden = false;
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    $("toast").hidden = true;
+  }, 4200);
 }
 
-const data=[
- {id:"mercedes",name:"Mercedes-Benz",area:"Roquebrune-sur-Argens",
-  address:"69 rue de la Tuilerie, 83520 Roquebrune-sur-Argens",
-  xy:[6.636719,43.461478],kind:"relance",
-  status:"À relancer",
-  history:"Première visite positive. Deuxième visite : refus lié à l’âge. Troisième démarche prévue pour montrer ta motivation.",
-  pitch:"Bonjour, je suis déjà venu pour mon stage de troisième. Je voulais vous remercier pour votre accueil et savoir si une observation dans un autre service serait possible malgré la limite d’âge. Si ce n’est pas possible, je comprends.",
-  old:"libfile_e7cfc716e5b88191a5c9788cab8c9c70"},
- {id:"porsche",name:"Porsche",area:"Puget-sur-Argens",
-  address:"788 rue du Général de Gaulle, 83480 Puget-sur-Argens",kind:"refus",
-  status:"Refus confirmé",history:"Première visite, puis refus expliqué par mail.",
-  pitch:"La candidature a été refusée. Aucune nouvelle visite n’est prévue.",
-  old:"libfile_b4548ca55d6c8191ae08740c57ff7e38"},
- {id:"bmw",name:"BMW",area:"Fréjus",
-  address:"36 rue Hubert Masquefa, 83600 Fréjus",xy:[6.733867,43.472699],
-  interest:"J’aime les voitures et la technologie. Chez BMW, j’aimerais comprendre ce qui se passe en concession, du conseil à un client au suivi de sa voiture.",
-  letter:"J’aime les voitures, mais je connais surtout les modèles. J’aimerais voir ce qu’il y a derrière : comment vous conseillez un client, comment la concession s’organise et comment une voiture est suivie après sa vente. BMW m’intéresse aussi pour la place de la technologie dans ses voitures.",
-  personal:"J’aime les sciences et je crée des pages web dans mes projets personnels. Je suis curieux et j’aime comprendre comment les choses fonctionnent."},
- {id:"audi",name:"Audi",area:"Secteur Fréjus",address:"Audi Fréjus",kind:"refus",
-  status:"Refus confirmé",history:"Refus dès la première visite.",
-  pitch:"La candidature a été refusée. Aucune nouvelle visite n’est prévue.",
-  old:"libfile_2f787aa3be2881919cdcb1a04c334447"},
- {id:"ferrari",name:"Ferrari — SF Côte d’Azur",area:"Le Cannet",
-  address:"114 boulevard Sadi Carnot, 06110 Le Cannet",
-  kind:"echange",status:"Dates envoyées · réponse attendue",
-  history:"12 octobre : CV et lettre remis, très bon accueil. Relance par mail le jeudi, puis appel le vendredi : stages annoncés à partir de 2027. Le 19 octobre à 10 h 07, Anaïs Lombardo demande les dates. Réponse envoyée : du 23 au 27 novembre 2026.",
-  pitch:"L’échange est en cours par mail. Attends la réponse à tes dates avant de prévoir une nouvelle visite. Si tu es invité à revenir : « Bonjour, je suis Thibault Dessaint. Nous avons échangé avec Madame Lombardo pour mon stage de troisième. »",
-  note:"Adresse reprise de la signature du mail reçu le 19 octobre ; à confirmer avant un déplacement.",
-  old:"libfile_57832b5360d8819186d0a43f76525269"},
- {id:"lamborghini",name:"Lamborghini",area:"Concession déjà visitée",
-  address:"Lamborghini Cannes",kind:"refus",status:"Refus confirmé",
-  history:"Refus dès la première visite ; la concession ne voyait pas l’intérêt du stage.",
-  pitch:"La candidature a été refusée. Aucune nouvelle visite n’est prévue.",
-  old:"libfile_e9cde3036c088191b627de3d810cf013"},
- {id:"toyota",name:"Toyota",area:"Fréjus",
-  address:"36 rue Hubert Masquefa, 83600 Fréjus",xy:[6.733867,43.472699],
-  interest:"Je voudrais découvrir le travail dans une concession Toyota et mieux comprendre les voitures hybrides.",
-  letter:"Je voudrais faire mon stage dans votre concession pour voir les différents métiers autour d’une voiture. Les modèles hybrides m’intéressent particulièrement : j’aimerais mieux comprendre leur fonctionnement et la manière dont vous les présentez aux clients.",
-  personal:"J’aime la physique-chimie et les technologies. Je suis à l’aise avec un ordinateur et je peux aider pour de petites tâches de classement ou de préparation de documents, si vous en avez besoin."},
- {id:"byd",name:"BYD",area:"Roquebrune-sur-Argens",
-  address:"9 rue de la Tuilerie, 83520 Roquebrune-sur-Argens",
-  interest:"Je m’intéresse aux voitures électriques et j’aimerais découvrir le fonctionnement d’une concession BYD.",
-  letter:"Les voitures électriques m’intéressent, surtout les batteries et les technologies qu’elles utilisent. J’aimerais faire mon stage chez BYD pour voir comment vous expliquez ces nouveautés aux clients et comment se déroule une journée dans votre concession.",
-  personal:"J’aime les sciences et l’informatique. Je crée des pages web dans mes projets personnels, et j’aime apprendre en essayant et en posant des questions."},
- {id:"tesla",name:"Tesla",area:"Cannes–Mandelieu",
-  address:"Avenue du Maréchal de Lattre de Tassigny, 06210 Mandelieu-la-Napoule",
-  xy:[6.9446249,43.5495466],
-  interest:"J’aimerais découvrir comment l’automobile et les logiciels se rejoignent chez Tesla, et observer le travail de votre équipe.",
-  letter:"Ce qui m’intéresse chez Tesla, c’est le lien entre les voitures et l’informatique. Je voudrais voir comment vous présentez les véhicules aux clients, comment vous répondez à leurs questions et comment votre centre s’organise au quotidien.",
-  personal:"Je crée des pages web et j’utilise l’intelligence artificielle dans mes projets personnels. Je ne connais pas encore les métiers de l’automobile : ce stage serait justement l’occasion de les découvrir."},
- {id:"mg",name:"MG",area:"Puget-sur-Argens",
-  address:"Zone industrielle les Meissugues, Route Nationale 7, 83480 Puget-sur-Argens",
-  interest:"Je souhaite découvrir les métiers d’une concession MG, l’accueil des clients et le suivi des véhicules.",
-  letter:"J’aimerais faire mon stage dans votre concession pour découvrir le travail autour de la vente et du suivi des voitures. Je voudrais notamment comprendre comment vous aidez un client à choisir un véhicule selon ses besoins et comment vous préparez sa livraison.",
-  personal:"J’aime l’automobile et les outils numériques. Je suis prêt à observer, à prendre des notes et à aider dans les petites tâches que vous pourrez me confier."},
- {id:"landrover",name:"Land Rover",area:"Fréjus",
-  address:"62 rue Hubert Masquefa, 83600 Fréjus",
-  interest:"J’aimerais découvrir les véhicules Land Rover et les métiers qui permettent de conseiller leurs clients et de les entretenir.",
-  letter:"Les véhicules Land Rover m’intéressent pour leur côté tout-terrain et leur technologie. J’aimerais voir comment vous les présentez aux clients et découvrir le travail qui se fait dans une concession, au-delà des voitures exposées.",
-  personal:"J’aime les sciences, les voitures et l’informatique. Je suis également en groupe compétition en voile, ce qui m’apprend à écouter les consignes et à rester attentif."},
- {id:"azimut",name:"Azimut Yachts — RCMarine Yachts",area:"Cannes",
-  address:"18 rue du Médecin Lieutenant Bertrand Lépine, 06400 Cannes",
-  xy:[7.027879,43.550636],
-  interest:"Je pratique la voile et je souhaite découvrir le monde des yachts ainsi que le travail d’une équipe Azimut.",
-  letter:"Je fais de la voile au Club Nautique de Saint-Raphaël et j’aimerais découvrir une autre partie du monde du bateau. Chez Azimut, je voudrais voir comment vous présentez un yacht, préparez une visite et accompagnez les personnes qui s’y intéressent.",
-  personal:"Je navigue en ILCA dans un groupe compétition, avec deux entraînements par semaine. Je suis aussi à l’aise avec les outils numériques et je suis des cours en anglais dans le cadre du Dual Diploma."},
- {id:"sanlorenzo",name:"Sanlorenzo",area:"Cannes",
-  address:"7 rue des Serbes, 06400 Cannes",xy:[7.020528,43.551713],
-  interest:"La voile me donne envie de découvrir les autres métiers du nautisme, notamment ceux liés aux yachts Sanlorenzo.",
-  letter:"Je pratique la voile, mais je connais encore peu le travail autour des grands yachts. C’est ce que j’aimerais découvrir chez Sanlorenzo : comment une visite se prépare, comment vous échangez avec les clients et comment les différents métiers se complètent.",
-  personal:"Je fais de l’ILCA en groupe compétition à Saint-Raphaël. Je suis également le Dual Diploma en anglais et je m’intéresse à l’informatique."},
- {id:"hdmarine",name:"HD Marine",area:"Saint-Raphaël",
-  address:"120 place du Club Nautique, 83700 Saint-Raphaël",
-  xy:[6.775637,43.416845],
-  interest:"Je pratique la voile à Saint-Raphaël et j’aimerais voir comment une entreprise nautique travaille au quotidien.",
-  letter:"Comme je pratique la voile à Saint-Raphaël, je voudrais découvrir les métiers du nautisme près de chez moi. Chez HD Marine, j’aimerais voir comment vous accueillez les clients et comment vous organisez le suivi et la préparation des bateaux.",
-  personal:"Je navigue en ILCA deux fois par semaine. J’aime apprendre des choses concrètes et je suis prêt à aider pour les tâches simples qui seraient adaptées à mon stage."},
- {id:"nautique",name:"Nautique Concept",area:"Saint-Raphaël",
-  address:"1 place du Lion de Terre, 83700 Saint-Raphaël",
-  xy:[6.783215,43.41012],
-  interest:"J’aimerais découvrir le travail de Nautique Concept et les étapes qui permettent de préparer et de suivre un bateau.",
-  letter:"Je voudrais faire mon stage chez Nautique Concept pour découvrir le quotidien d’une entreprise nautique. Je m’intéresse aux bateaux et j’aimerais comprendre ce qui se passe avant et après une sortie en mer, ainsi que le travail avec les clients.",
-  personal:"Je pratique la voile en groupe compétition au Club Nautique de Saint-Raphaël. J’aime aussi l’informatique et je peux aider pour de petites tâches sur ordinateur ou pour du classement."},
- {id:"capone",name:"Cap One Boat",area:"Port-Fréjus",
-  address:"57 quai Cléopâtre, 83600 Fréjus",
-  interest:"Je souhaite découvrir comment Cap One Boat prépare les sorties et accompagne ses clients à Port-Fréjus.",
-  letter:"J’habite à Fréjus et je voudrais découvrir votre activité au port. Je serais intéressé par la préparation des sorties, l’accueil des clients et l’organisation qu’il faut pour que tout se passe bien avant un départ en bateau.",
-  personal:"Je fais de la voile en ILCA à Saint-Raphaël. Ce stage me permettrait de voir le port du côté des professionnels, et pas seulement de celui des personnes qui viennent naviguer."},
- {id:"azz",name:"AZZ Yachting",area:"Port Santa Lucia",
-  address:"2 place Amiral Ortoli, 83700 Saint-Raphaël",
-  interest:"J’aimerais découvrir les activités d’AZZ Yachting et la façon dont une agence nautique conseille ses clients.",
-  letter:"Je vous propose ma candidature pour découvrir le fonctionnement de votre agence. La vente et la location de bateaux m’intéressent : j’aimerais comprendre les questions que les clients vous posent et comment vous les aidez à choisir.",
-  personal:"Je pratique la voile en groupe compétition à Saint-Raphaël. J’aime aussi les outils numériques et je serais content de pouvoir aider sur des tâches simples tout en découvrant votre métier."},
- {id:"life",name:"Life is Boat",area:"Port Santa Lucia",
-  address:"2 place Amiral Ortoli, 83700 Saint-Raphaël",
-  interest:"Je souhaite découvrir les différents services autour d’un bateau, de sa préparation à son suivi.",
-  letter:"Ce qui m’intéresse chez Life is Boat, c’est de découvrir tout le travail qu’un bateau demande en dehors de la navigation. J’aimerais observer la préparation, l’organisation des services et les échanges avec les propriétaires ou les clients.",
-  personal:"Je fais de la voile deux fois par semaine et j’aime comprendre comment les choses fonctionnent. Je suis prêt à écouter les consignes et à donner un coup de main sur ce qui pourra m’être confié."},
- {id:"amc",name:"AMC Cape Grace",area:"Vieux-Port de Saint-Raphaël",
-  address:"63 quai Amiral Nomy, 83700 Saint-Raphaël",
-  interest:"Je pratique la voile et je voudrais découvrir l’organisation des sorties en catamaran chez AMC Cape Grace.",
-  letter:"J’aimerais découvrir comment vous organisez vos sorties en catamaran, de la réservation à l’accueil des passagers. Comme je pratique la voile, cela m’intéresserait de voir comment une équipe fait partager la mer à ses clients.",
-  personal:"Je navigue en ILCA à Saint-Raphaël et je suis des cours en anglais avec le Dual Diploma. Je pourrais aider pour de petites tâches d’accueil ou de préparation de documents, selon vos besoins."},
- {id:"boulanger",name:"Boulanger",area:"Puget-sur-Argens",
-  address:"Zone d’activités la Tuilière, Route Nationale 7, 83480 Puget-sur-Argens",
-  kind:"relance",status:"Sans réponse · à relancer",
-  history:"Première visite effectuée. Pas de réponse pour l’instant.",
-  pitch:"Bonjour, je suis venu déposer ma candidature pour un stage de troisième du 23 au 27 novembre. Je voulais savoir si vous aviez pu la regarder et si je pouvais parler à la personne qui s’occupe des stages.",
-  old:"libfile_27783f6db87c8191b85aba25939b2dde"},
- {id:"mairie",name:"Mairie de Fréjus",area:"Centre-ville de Fréjus",
-  address:"45 place Camille Formigé, 83600 Fréjus",
-  interest:"J’habite à Fréjus et je souhaite comprendre comment les services de la mairie travaillent pour les habitants.",
-  letter:"J’habite dans le centre-ville de Fréjus et j’aimerais découvrir ce qui se passe dans la mairie au quotidien. Je serais intéressé par l’accueil, l’organisation des services ou les outils numériques utilisés pour informer les habitants, selon les possibilités de stage.",
-  personal:"Je crée des pages web dans mes projets personnels et j’aime l’informatique. Je pourrais aider pour de petites tâches de classement ou de préparation de documents, en suivant les consignes du service."},
- {id:"maserati",name:"Maserati",area:"Le Cannet",
-  address:"440 avenue du Campon, 06110 Le Cannet",
-  interest:"Je souhaite découvrir les voitures Maserati et le travail quotidien d’une concession automobile.",
-  letter:"J’aime les voitures et je voudrais découvrir votre concession Maserati pendant mon stage. Je serais intéressé par l’accueil des clients, la présentation des modèles et la préparation des véhicules avant leur livraison.",
-  personal:"J’aime la technologie et les sciences, et je crée des pages web dans mes projets personnels. Ce serait mon premier stage : j’ai surtout envie d’apprendre et de voir comment une équipe travaille."}
-].map(c=>({
- kind:"nouveau",status:"Première visite à prévoir",
- history:"Aucune visite effectuée. Rencontre prévue dans les prochains jours.",
- ...c
+function save() {
+  state.days[DAY] = [...selected];
+
+  try {
+    localStorage.setItem(KEY, JSON.stringify(state));
+  } catch {
+    toast(
+      "Mémoire du navigateur pleine ou indisponible. " +
+      "Les modifications restent actives dans cette page."
+    );
+  }
+}
+
+/* Entreprises et candidatures */
+
+const data = [
+
+  {
+    id: "mercedes",
+    name: "Mercedes-Benz",
+    area: "Roquebrune-sur-Argens",
+    address: "69 rue de la Tuilerie, 83520 Roquebrune-sur-Argens",
+    xy: [6.636719, 43.461478],
+    kind: "relance",
+    status: "À relancer",
+    history:
+      "Première visite positive. Deuxième visite : refus lié à l’âge. " +
+      "Troisième démarche prévue pour montrer ta motivation.",
+    pitch:
+      "Bonjour, je suis déjà venu pour mon stage de troisième. " +
+      "Je voulais vous remercier pour votre accueil et savoir si une " +
+      "observation dans un autre service serait possible malgré la limite " +
+      "d’âge. Si ce n’est pas possible, je comprends.",
+    old: "libfile_e7cfc716e5b88191a5c9788cab8c9c70"
+  },
+
+  {
+    id: "porsche",
+    name: "Porsche",
+    area: "Puget-sur-Argens",
+    address: "788 rue du Général de Gaulle, 83480 Puget-sur-Argens",
+    kind: "refus",
+    status: "Refus confirmé",
+    history: "Première visite, puis refus expliqué par mail.",
+    pitch:
+      "La candidature a été refusée. Aucune nouvelle visite n’est prévue.",
+    old: "libfile_b4548ca55d6c8191ae08740c57ff7e38"
+  },
+
+  {
+    id: "bmw",
+    name: "BMW",
+    area: "Fréjus",
+    address: "36 rue Hubert Masquefa, 83600 Fréjus",
+    xy: [6.733867, 43.472699],
+    interest:
+      "J’aime les voitures et la technologie. Chez BMW, j’aimerais " +
+      "comprendre ce qui se passe en concession, du conseil à un client " +
+      "au suivi de sa voiture.",
+    letter:
+      "J’aime les voitures, mais je connais surtout les modèles. " +
+      "J’aimerais voir ce qu’il y a derrière : comment vous conseillez " +
+      "un client, comment la concession s’organise et comment une voiture " +
+      "est suivie après sa vente. BMW m’intéresse aussi pour la place " +
+      "de la technologie dans ses voitures.",
+    personal:
+      "J’aime les sciences et je crée des pages web dans mes projets " +
+      "personnels. Je suis curieux et j’aime comprendre comment les " +
+      "choses fonctionnent."
+  },
+
+  {
+    id: "audi",
+    name: "Audi",
+    area: "Secteur Fréjus",
+    address: "Audi Fréjus",
+    kind: "refus",
+    status: "Refus confirmé",
+    history: "Refus dès la première visite.",
+    pitch:
+      "La candidature a été refusée. Aucune nouvelle visite n’est prévue.",
+    old: "libfile_2f787aa3be2881919cdcb1a04c334447"
+  },
+
+  {
+    id: "ferrari",
+    name: "Ferrari — SF Côte d’Azur",
+    area: "Le Cannet",
+    address: "114 boulevard Sadi Carnot, 06110 Le Cannet",
+    kind: "echange",
+    status: "Dates envoyées · réponse attendue",
+    history:
+      "12 octobre : CV et lettre remis, très bon accueil. " +
+      "Relance par mail le jeudi, puis appel le vendredi : stages " +
+      "annoncés à partir de 2027. Le 19 octobre à 10 h 07, " +
+      "Anaïs Lombardo demande les dates. Réponse envoyée : " +
+      "du 23 au 27 novembre 2026.",
+    pitch:
+      "L’échange est en cours par mail. Attends la réponse à tes dates " +
+      "avant de prévoir une nouvelle visite. Si tu es invité à revenir : " +
+      "« Bonjour, je suis Thibault Dessaint. Nous avons échangé avec " +
+      "Madame Lombardo pour mon stage de troisième. »",
+    note:
+      "Adresse reprise de la signature du mail reçu le 19 octobre ; " +
+      "à confirmer avant un déplacement.",
+    old: "libfile_57832b5360d8819186d0a43f76525269"
+  },
+
+  {
+    id: "lamborghini",
+    name: "Lamborghini",
+    area: "Concession déjà visitée",
+    address: "Lamborghini Cannes",
+    kind: "refus",
+    status: "Refus confirmé",
+    history:
+      "Refus dès la première visite ; la concession ne voyait pas " +
+      "l’intérêt du stage.",
+    pitch:
+      "La candidature a été refusée. Aucune nouvelle visite n’est prévue.",
+    old: "libfile_e9cde3036c088191b627de3d810cf013"
+  },
+
+  {
+    id: "toyota",
+    name: "Toyota",
+    area: "Fréjus",
+    address: "36 rue Hubert Masquefa, 83600 Fréjus",
+    xy: [6.733867, 43.472699],
+    interest:
+      "Je voudrais découvrir le travail dans une concession Toyota " +
+      "et mieux comprendre les voitures hybrides.",
+    letter:
+      "Je voudrais faire mon stage dans votre concession pour voir " +
+      "les différents métiers autour d’une voiture. Les modèles " +
+      "hybrides m’intéressent particulièrement : j’aimerais mieux " +
+      "comprendre leur fonctionnement et la manière dont vous les " +
+      "présentez aux clients.",
+    personal:
+      "J’aime la physique-chimie et les technologies. Je suis à l’aise " +
+      "avec un ordinateur et je peux aider pour de petites tâches " +
+      "de classement ou de préparation de documents, si vous en avez besoin."
+  },
+
+  {
+    id: "byd",
+    name: "BYD",
+    area: "Roquebrune-sur-Argens",
+    address: "9 rue de la Tuilerie, 83520 Roquebrune-sur-Argens",
+    interest:
+      "Je m’intéresse aux voitures électriques et j’aimerais découvrir " +
+      "le fonctionnement d’une concession BYD.",
+    letter:
+      "Les voitures électriques m’intéressent, surtout les batteries " +
+      "et les technologies qu’elles utilisent. J’aimerais faire mon " +
+      "stage chez BYD pour voir comment vous expliquez ces nouveautés " +
+      "aux clients et comment se déroule une journée dans votre concession.",
+    personal:
+      "J’aime les sciences et l’informatique. Je crée des pages web " +
+      "dans mes projets personnels, et j’aime apprendre en essayant " +
+      "et en posant des questions."
+  },
+
+  {
+    id: "tesla",
+    name: "Tesla",
+    area: "Cannes–Mandelieu",
+    address:
+      "Avenue du Maréchal de Lattre de Tassigny, 06210 Mandelieu-la-Napoule",
+    xy: [6.9446249, 43.5495466],
+    interest:
+      "J’aimerais découvrir comment l’automobile et les logiciels " +
+      "se rejoignent chez Tesla, et observer le travail de votre équipe.",
+    letter:
+      "Ce qui m’intéresse chez Tesla, c’est le lien entre les voitures " +
+      "et l’informatique. Je voudrais voir comment vous présentez les " +
+      "véhicules aux clients, comment vous répondez à leurs questions " +
+      "et comment votre centre s’organise au quotidien.",
+    personal:
+      "Je crée des pages web et j’utilise l’intelligence artificielle " +
+      "dans mes projets personnels. Je ne connais pas encore les métiers " +
+      "de l’automobile : ce stage serait justement l’occasion de les découvrir."
+  },
+
+  {
+    id: "mg",
+    name: "MG",
+    area: "Puget-sur-Argens",
+    address:
+      "Zone industrielle les Meissugues, Route Nationale 7, 83480 Puget-sur-Argens",
+    interest:
+      "Je souhaite découvrir les métiers d’une concession MG, " +
+      "l’accueil des clients et le suivi des véhicules.",
+    letter:
+      "J’aimerais faire mon stage dans votre concession pour découvrir " +
+      "le travail autour de la vente et du suivi des voitures. " +
+      "Je voudrais notamment comprendre comment vous aidez un client " +
+      "à choisir un véhicule selon ses besoins et comment vous préparez " +
+      "sa livraison.",
+    personal:
+      "J’aime l’automobile et les outils numériques. Je suis prêt " +
+      "à observer, à prendre des notes et à aider dans les petites " +
+      "tâches que vous pourrez me confier."
+  },
+
+  {
+    id: "landrover",
+    name: "Land Rover",
+    area: "Fréjus",
+    address: "62 rue Hubert Masquefa, 83600 Fréjus",
+    interest:
+      "J’aimerais découvrir les véhicules Land Rover et les métiers " +
+      "qui permettent de conseiller leurs clients et de les entretenir.",
+    letter:
+      "Les véhicules Land Rover m’intéressent pour leur côté tout-terrain " +
+      "et leur technologie. J’aimerais voir comment vous les présentez " +
+      "aux clients et découvrir le travail qui se fait dans une concession, " +
+      "au-delà des voitures exposées.",
+    personal:
+      "J’aime les sciences, les voitures et l’informatique. Je suis " +
+      "également en groupe compétition en voile, ce qui m’apprend " +
+      "à écouter les consignes et à rester attentif."
+  },
+
+  {
+    id: "azimut",
+    name: "Azimut Yachts — RCMarine Yachts",
+    area: "Cannes",
+    address:
+      "18 rue du Médecin Lieutenant Bertrand Lépine, 06400 Cannes",
+    xy: [7.027879, 43.550636],
+    interest:
+      "Je pratique la voile et je souhaite découvrir le monde " +
+      "des yachts ainsi que le travail d’une équipe Azimut.",
+    letter:
+      "Je fais de la voile au Club Nautique de Saint-Raphaël et " +
+      "j’aimerais découvrir une autre partie du monde du bateau. " +
+      "Chez Azimut, je voudrais voir comment vous présentez un yacht, " +
+      "préparez une visite et accompagnez les personnes qui s’y intéressent.",
+    personal:
+      "Je navigue en ILCA dans un groupe compétition, avec deux " +
+      "entraînements par semaine. Je suis aussi à l’aise avec les " +
+      "outils numériques et je suis des cours en anglais dans le " +
+      "cadre du Dual Diploma."
+  },
+
+  {
+    id: "sanlorenzo",
+    name: "Sanlorenzo",
+    area: "Cannes",
+    address: "7 rue des Serbes, 06400 Cannes",
+    xy: [7.020528, 43.551713],
+    interest:
+      "La voile me donne envie de découvrir les autres métiers " +
+      "du nautisme, notamment ceux liés aux yachts Sanlorenzo.",
+    letter:
+      "Je pratique la voile, mais je connais encore peu le travail " +
+      "autour des grands yachts. C’est ce que j’aimerais découvrir " +
+      "chez Sanlorenzo : comment une visite se prépare, comment " +
+      "vous échangez avec les clients et comment les différents " +
+      "métiers se complètent.",
+    personal:
+      "Je fais de l’ILCA en groupe compétition à Saint-Raphaël. " +
+      "Je suis également le Dual Diploma en anglais et je m’intéresse " +
+      "à l’informatique."
+  },
+
+  {
+    id: "hdmarine",
+    name: "HD Marine",
+    area: "Saint-Raphaël",
+    address: "120 place du Club Nautique, 83700 Saint-Raphaël",
+    xy: [6.775637, 43.416845],
+    interest:
+      "Je pratique la voile à Saint-Raphaël et j’aimerais voir " +
+      "comment une entreprise nautique travaille au quotidien.",
+    letter:
+      "Comme je pratique la voile à Saint-Raphaël, je voudrais " +
+      "découvrir les métiers du nautisme près de chez moi. Chez " +
+      "HD Marine, j’aimerais voir comment vous accueillez les clients " +
+      "et comment vous organisez le suivi et la préparation des bateaux.",
+    personal:
+      "Je navigue en ILCA deux fois par semaine. J’aime apprendre " +
+      "des choses concrètes et je suis prêt à aider pour les tâches " +
+      "simples qui seraient adaptées à mon stage."
+  },
+
+  {
+    id: "nautique",
+    name: "Nautique Concept",
+    area: "Saint-Raphaël",
+    address: "1 place du Lion de Terre, 83700 Saint-Raphaël",
+    xy: [6.783215, 43.41012],
+    interest:
+      "J’aimerais découvrir le travail de Nautique Concept et les " +
+      "étapes qui permettent de préparer et de suivre un bateau.",
+    letter:
+      "Je voudrais faire mon stage chez Nautique Concept pour " +
+      "découvrir le quotidien d’une entreprise nautique. Je m’intéresse " +
+      "aux bateaux et j’aimerais comprendre ce qui se passe avant " +
+      "et après une sortie en mer, ainsi que le travail avec les clients.",
+    personal:
+      "Je pratique la voile en groupe compétition au Club Nautique " +
+      "de Saint-Raphaël. J’aime aussi l’informatique et je peux aider " +
+      "pour de petites tâches sur ordinateur ou pour du classement."
+  },
+
+  {
+    id: "capone",
+    name: "Cap One Boat",
+    area: "Port-Fréjus",
+    address: "57 quai Cléopâtre, 83600 Fréjus",
+    interest:
+      "Je souhaite découvrir comment Cap One Boat prépare les " +
+      "sorties et accompagne ses clients à Port-Fréjus.",
+    letter:
+      "J’habite à Fréjus et je voudrais découvrir votre activité " +
+      "au port. Je serais intéressé par la préparation des sorties, " +
+      "l’accueil des clients et l’organisation qu’il faut pour que " +
+      "tout se passe bien avant un départ en bateau.",
+    personal:
+      "Je fais de la voile en ILCA à Saint-Raphaël. Ce stage me " +
+      "permettrait de voir le port du côté des professionnels, " +
+      "et pas seulement de celui des personnes qui viennent naviguer."
+  },
+
+  {
+    id: "azz",
+    name: "AZZ Yachting",
+    area: "Port Santa Lucia",
+    address: "2 place Amiral Ortoli, 83700 Saint-Raphaël",
+    interest:
+      "J’aimerais découvrir les activités d’AZZ Yachting et la " +
+      "façon dont une agence nautique conseille ses clients.",
+    letter:
+      "Je vous propose ma candidature pour découvrir le fonctionnement " +
+      "de votre agence. La vente et la location de bateaux m’intéressent : " +
+      "j’aimerais comprendre les questions que les clients vous posent " +
+      "et comment vous les aidez à choisir.",
+    personal:
+      "Je pratique la voile en groupe compétition à Saint-Raphaël. " +
+      "J’aime aussi les outils numériques et je serais content de " +
+      "pouvoir aider sur des tâches simples tout en découvrant votre métier."
+  },
+
+  {
+    id: "life",
+    name: "Life is Boat",
+    area: "Port Santa Lucia",
+    address: "2 place Amiral Ortoli, 83700 Saint-Raphaël",
+    interest:
+      "Je souhaite découvrir les différents services autour " +
+      "d’un bateau, de sa préparation à son suivi.",
+    letter:
+      "Ce qui m’intéresse chez Life is Boat, c’est de découvrir " +
+      "tout le travail qu’un bateau demande en dehors de la navigation. " +
+      "J’aimerais observer la préparation, l’organisation des services " +
+      "et les échanges avec les propriétaires ou les clients.",
+    personal:
+      "Je fais de la voile deux fois par semaine et j’aime comprendre " +
+      "comment les choses fonctionnent. Je suis prêt à écouter les " +
+      "consignes et à donner un coup de main sur ce qui pourra m’être confié."
+  },
+
+  {
+    id: "amc",
+    name: "AMC Cape Grace",
+    area: "Vieux-Port de Saint-Raphaël",
+    address: "63 quai Amiral Nomy, 83700 Saint-Raphaël",
+    interest:
+      "Je pratique la voile et je voudrais découvrir l’organisation " +
+      "des sorties en catamaran chez AMC Cape Grace.",
+    letter:
+      "J’aimerais découvrir comment vous organisez vos sorties " +
+      "en catamaran, de la réservation à l’accueil des passagers. " +
+      "Comme je pratique la voile, cela m’intéresserait de voir " +
+      "comment une équipe fait partager la mer à ses clients.",
+    personal:
+      "Je navigue en ILCA à Saint-Raphaël et je suis des cours en " +
+      "anglais avec le Dual Diploma. Je pourrais aider pour de petites " +
+      "tâches d’accueil ou de préparation de documents, selon vos besoins."
+  },
+
+  {
+    id: "boulanger",
+    name: "Boulanger",
+    area: "Puget-sur-Argens",
+    address:
+      "Zone d’activités la Tuilière, Route Nationale 7, 83480 Puget-sur-Argens",
+    kind: "relance",
+    status: "Sans réponse · à relancer",
+    history: "Première visite effectuée. Pas de réponse pour l’instant.",
+    pitch:
+      "Bonjour, je suis venu déposer ma candidature pour un stage " +
+      "de troisième du 23 au 27 novembre. Je voulais savoir si vous " +
+      "aviez pu la regarder et si je pouvais parler à la personne " +
+      "qui s’occupe des stages.",
+    old: "libfile_27783f6db87c8191b85aba25939b2dde"
+  },
+
+  {
+    id: "mairie",
+    name: "Mairie de Fréjus",
+    area: "Centre-ville de Fréjus",
+    address: "45 place Camille Formigé, 83600 Fréjus",
+    interest:
+      "J’habite à Fréjus et je souhaite comprendre comment les " +
+      "services de la mairie travaillent pour les habitants.",
+    letter:
+      "J’habite dans le centre-ville de Fréjus et j’aimerais découvrir " +
+      "ce qui se passe dans la mairie au quotidien. Je serais intéressé " +
+      "par l’accueil, l’organisation des services ou les outils " +
+      "numériques utilisés pour informer les habitants, selon " +
+      "les possibilités de stage.",
+    personal:
+      "Je crée des pages web dans mes projets personnels et j’aime " +
+      "l’informatique. Je pourrais aider pour de petites tâches de " +
+      "classement ou de préparation de documents, en suivant les " +
+      "consignes du service."
+  },
+
+  {
+    id: "maserati",
+    name: "Maserati",
+    area: "Le Cannet",
+    address: "440 avenue du Campon, 06110 Le Cannet",
+    interest:
+      "Je souhaite découvrir les voitures Maserati et le travail " +
+      "quotidien d’une concession automobile.",
+    letter:
+      "J’aime les voitures et je voudrais découvrir votre concession " +
+      "Maserati pendant mon stage. Je serais intéressé par l’accueil " +
+      "des clients, la présentation des modèles et la préparation " +
+      "des véhicules avant leur livraison.",
+    personal:
+      "J’aime la technologie et les sciences, et je crée des pages " +
+      "web dans mes projets personnels. Ce serait mon premier stage : " +
+      "j’ai surtout envie d’apprendre et de voir comment une équipe travaille."
+  }
+
+].map(company => ({
+  kind: "nouveau",
+  status: "Première visite à prévoir",
+  history:
+    "Aucune visite effectuée. Rencontre prévue dans les prochains jours.",
+  ...company
 }));
 
-const byId=id=>data.find(c=>c.id===id);
-const newCompanies=data.filter(c=>c.kind==="nouveau");
-const activeCompanies=data.filter(c=>c.kind!=="refus");
-selected=new Set([...selected].filter(id=>byId(id)&&byId(id).kind!=="refus"));
+const byId = id => data.find(company => company.id === id);
 
-function waze(c){
- return "https://waze.com/ul?q="+encodeURIComponent(c.name+" "+c.address)+"&navigate=yes";
-}
-function defaultPitch(c){
- if(c.id==="mairie")
-  return "Bonjour, je m’appelle Thibault Dessaint, je suis en troisième à Stanislas. Je cherche un stage du 23 au 27 novembre. Est-ce que certains services de la mairie accueillent des élèves ? J’ai mon CV et ma lettre avec moi.";
- return `Bonjour, je m’appelle Thibault Dessaint, je suis en troisième à Stanislas. Je cherche un stage du 23 au 27 novembre et j’aimerais le faire chez vous. Est-ce que vous prenez des élèves de troisième ? J’ai apporté mon CV et ma lettre.`;
-}
-function switchTab(tab){
- const stages=tab==="stages";
- $("stagesPanel").hidden=!stages;
- $("routePanel").hidden=stages;
- $("stagesTab").classList.toggle("active",stages);
- $("routeTab").classList.toggle("active",!stages);
- $("stagesTab").setAttribute("aria-current",stages?"page":"false");
- $("routeTab").setAttribute("aria-current",stages?"false":"page");
-}
-function invalidateRoute(){
- routeVersion++;
- $("routeResult").replaceChildren();
- $("routeMessage").textContent="Sélection modifiée : recalcule le trajet.";
-}
-function toggleDone(id){
- state.done[id]=!state.done[id];
- save();invalidateRoute();render();
-}
-function card(c,i){
- const done=!!state.done[c.id];
- return `<article class="card ${done?"complete":""}" style="--delay:${Math.min(i,8)*25}ms">
-  ${c.kind==="refus"?"":`<button class="check" data-check="${c.id}" aria-label="Marquer la visite chez ${esc(c.name)}" aria-pressed="${done}">
-  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-8"/></svg></button>`}
-  <button class="company-open" data-open="${c.id}">
-   <strong>${esc(c.name)}</strong>
-   <span>${esc(c.area)}</span>
-   <span><b class="tag">${done?"Visite cochée":esc(c.status)}</b></span>
-  </button><span class="chevron" aria-hidden="true">›</span>
- </article>`;
-}
-function render(){
- $("companyList").innerHTML=activeCompanies.map(card).join("");
- $("archiveList").innerHTML=data.filter(c=>c.kind==="refus").map(card).join("");
- const done=activeCompanies.filter(c=>state.done[c.id]).length;
- $("progress").textContent=`${done} / ${activeCompanies.length} cochées`;
- $("routeChoices").innerHTML=activeCompanies.filter(c=>!state.done[c.id]).map(c=>
- `<label class="select-row"><input type="checkbox" data-select="${c.id}" ${selected.has(c.id)?"checked":""}>
-  <span>${esc(c.name)}<small>${esc(c.area)}${c.id==="ferrari"?" · réponse par mail attendue":""}</small></span>
- </label>`).join("")||"<p>Toutes les visites sont cochées.</p>";
+const newCompanies = data.filter(company => company.kind === "nouveau");
+
+const activeCompanies = data.filter(company => company.kind !== "refus");
+
+selected = new Set(
+  [...selected].filter(id => byId(id) && byId(id).kind !== "refus")
+);
+
+/* Navigation et affichage */
+
+function waze(company) {
+  return "https://waze.com/ul?q=" +
+    encodeURIComponent(company.name + " " + company.address) +
+    "&navigate=yes";
 }
 
-function detail(c){
- $("detailHeading").textContent=c.name;
- $("detailBody").innerHTML=`
- <h3>Statut</h3><span class="tag">${esc(c.status)}</span>
- <p>${esc(c.history)}</p>
- ${state.done[c.id]?'<p class="small">Visite cochée dans cette application.</p>':""}
- <h3>Ce que tu peux dire</h3>
- <p class="quote">${esc(c.pitch||defaultPitch(c))}</p>
- ${c.kind==="nouveau"?`<p class="small">${esc(c.interest)}</p>`:""}
- ${c.kind!=="refus"?`
- <h3>Si on te pose des questions</h3>
- <p class="small"><strong>Ton âge :</strong> « J’aurai 14 ans au moment du stage. »<br>
- <strong>Ce que tu sais faire :</strong> « Je crée des pages web et je suis à l’aise avec les outils numériques. Je peux aider sur des tâches simples. »<br>
- <strong>Si le responsable est absent :</strong> « À quel moment puis-je le rappeler ? »<br>
- <strong>Si c’est non :</strong> remercie la personne et demande éventuellement si elle connaît une autre structure.</p>`:""}
- <h3>Ton CV</h3>
- <div class="actions">
- ${c.kind==="nouveau"?
- `<button class="button primary" data-doc="cv" data-id="${c.id}">Voir / imprimer le CV</button>
- <button class="button secondary" data-doc="letter" data-id="${c.id}">Lettre de motivation</button>`:
- `<a class="button primary" target="_blank" rel="noopener"
- href="https://chatgpt.com/api/library/files/${c.old}/download">Ouvrir le CV existant</a>`}
- </div>
- ${c.kind!=="nouveau"?'<p class="notice">Le CV existant s’ouvre avec ton compte ChatGPT.</p>':""}
- <h3>Adresse</h3><p class="small">${esc(c.address)}</p>
- ${c.note?`<p class="notice">${esc(c.note)}</p>`:""}
- <a class="button secondary wide" href="${esc(waze(c))}" target="_blank" rel="noopener">Ouvrir dans Waze ↗</a>
- `;
- $("detailDialog").showModal();
-}
-
-function contact(){
- return `<p class="contact">Fréjus (83600) · 07 64 40 58 13<br>
- dessaint.contact@gmail.com<br>Mobilité : voiture / bus</p>`;
-}
-function photo(){
- return state.photo?`<img class="photo" src="${esc(state.photo)}" alt="Portrait de Thibault Dessaint">`:"";
-}
-function cv(c){
- return `<article class="doc">
- <div class="doc-header"><div>
-  <h1>THIBAULT<br>DESSAINT</h1>
-  <p class="subtitle">STAGE D’OBSERVATION DE 3e</p>
-  <p><strong>Du 23 au 27 novembre 2026</strong><br>14 ans lors du stage</p>
-  ${contact()}<p class="target">Candidature · ${esc(c.name)}</p>
- </div>${photo()}</div>
- <h2>Mon profil</h2>
- <p>Je suis en troisième à l’Institut Stanislas de Saint-Raphaël. ${esc(c.interest)}</p>
- <p>Je peux apporter de l’implication, une aisance avec les outils numériques et l’envie d’aider dans les tâches simples qui me seront confiées.</p>
- <h2>Ma scolarité</h2>
- <p><strong>2026–2027 · 3e B — Institut Stanislas, Saint-Raphaël</strong></p>
- <p><strong>2026–2027 · Dual Diploma Academica</strong><br>
- Préparation d’un diplôme américain en parallèle de ma scolarité française, avec des cours en ligne en anglais.</p>
- <p><strong>Automne 2025 · British International Academy Marrakech</strong><br>
- Un trimestre dans une école britannique, avec tous les cours en anglais.</p>
- <div class="columns"><div>
-  <h2>Compétences et projets</h2>
-  <p><strong>Projets numériques personnels</strong><br>
-  Création de pages web. Utilisation avancée de l’intelligence artificielle.
-  Intérêt pour les usages concrets du numérique.</p>
-  <p><strong>Sciences et mathématiques</strong><br>
-  Intérêt pour les mathématiques, la technologie et la physique-chimie.
-  18,75/20 en physique-chimie au dernier trimestre de 4e.</p>
-  <p><strong>Adaptation et sérieux</strong><br>
-  Scolarité à l’étranger, puis retour en France en cours d’année.
-  Tableau d’honneur au deuxième trimestre de 4e.</p>
-  <h2>Centres d’intérêt</h2>
-  <p>Sciences et technologies, informatique, automobile, voile et tennis.</p>
- </div><div>
-  <h2>Langues</h2>
-  <p><strong>Français</strong><br>Langue maternelle.</p>
-  <p><strong>Anglais</strong><br>Niveau B1, EF SET 2026.<br>
-  Pratique à Marrakech et avec le Dual Diploma.</p>
-  <p><strong>Espagnol</strong><br>LV2, niveau scolaire.</p>
-  <h2>Activités</h2>
-  <p><strong>Voile en groupe compétition</strong><br>
-  ILCA, Club Nautique de Saint-Raphaël, depuis septembre 2026.
-  Deux entraînements par semaine.</p>
-  <p><strong>Tennis</strong><br>Pratique en club et stages pendant les vacances.</p>
- </div></div>
- </article>`;
-}
-function letter(c){
- return `<article class="doc letter">
- <div class="doc-header"><div>
-  <h1>THIBAULT DESSAINT</h1>
-  <p class="subtitle">CANDIDATURE · STAGE DE TROISIÈME</p>
-  ${contact()}
- </div></div>
- <div class="recipient"><strong>${esc(c.name)}</strong><br>${esc(c.area)}</div>
- <p><strong>Objet : stage de troisième du 23 au 27 novembre 2026</strong></p>
- <div class="letter-body">
- <p>Madame, Monsieur,</p>
- <p>Je m’appelle Thibault Dessaint et je suis en troisième à l’Institut Stanislas
- de Saint-Raphaël. Je cherche un stage d’observation du 23 au 27 novembre 2026
- et j’aimerais le faire chez vous.</p>
- <p>${esc(c.letter)}</p>
- <p>${esc(c.personal)}</p>
- <p>Je peux me déplacer en voiture ou en bus. Je serais content de pouvoir
- vous rencontrer pour en parler.</p>
- <p>Merci d’avoir pris le temps de lire ma candidature.</p>
- <p>Bonne journée,</p>
- <p class="signature">Thibault Dessaint</p>
- </div></article>`;
-}
-function showDocuments(type,companies){
- if($("detailDialog").open) $("detailDialog").close();
- const make=type==="cv"?cv:letter;
- printingHTML=companies.map(make).join("");
- $("documentsHeading").textContent=type==="cv"?"CV de candidature":"Lettres de motivation";
- $("documentSummary").textContent=
- `${companies.length} document${companies.length>1?"s":""} : ${companies.map(c=>c.name).join(", ")}. `+
- "L’aperçu montre le premier document. Le bouton imprime toute la sélection."+
- (type==="cv"&&!state.photo?" Ajoute ta photo avec le bouton « Photo des CV » avant de préparer les versions finales.":"");
- $("documentPreview").innerHTML=make(companies[0]);
- $("documentsDialog").showModal();
-}
-$("printDocuments").onclick=()=>{
- $("paper").innerHTML=printingHTML;
- const imgs=[...$("paper").querySelectorAll("img")];
- Promise.all(imgs.map(im=>im.decode?im.decode().catch(()=>{}):Promise.resolve()))
- .then(()=>{
-  $("documentsDialog").close();
-  requestAnimationFrame(()=>requestAnimationFrame(()=>window.print()));
- });
-};
-
-$("photoButton").onclick=()=>$("photoFile").click();
-$("photoFile").onchange=async e=>{
- const file=e.target.files[0];
- if(!file)return;
- if(!["image/jpeg","image/png"].includes(file.type)){
-  toast("Choisis une photo JPG ou PNG.");return;
- }
- if(file.size>8*1024*1024){
-  toast("Choisis une photo de moins de 8 Mo.");return;
- }
- try{
-  const result=await new Promise((resolve,reject)=>{
-   const reader=new FileReader();
-   reader.onload=()=>resolve(reader.result);
-   reader.onerror=reject;
-   reader.readAsDataURL(file);
-  });
-  state.photo=result;save();toast("Photo ajoutée à tous les nouveaux CV.");
- }catch{toast("La photo n’a pas pu être chargée.")}
- e.target.value="";
-};
-
-document.addEventListener("click",e=>{
- const check=e.target.closest("[data-check]");
- if(check){toggleDone(check.dataset.check);return}
- const open=e.target.closest("[data-open]");
- if(open){detail(byId(open.dataset.open));return}
- const doc=e.target.closest("[data-doc]");
- if(doc){showDocuments(doc.dataset.doc,[byId(doc.dataset.id)]);return}
- const add=e.target.closest("[data-add]");
- if(add){
-  selected.add(add.dataset.add);save();invalidateRoute();render();
-  toast("Entreprise ajoutée. Recalcule pour actualiser le trajet.");
- }
-});
-document.addEventListener("change",e=>{
- const id=e.target.dataset.select;
- if(id){
-  e.target.checked?selected.add(id):selected.delete(id);
-  save();invalidateRoute();
- }
-});
-$("closeDetail").onclick=()=>$("detailDialog").close();
-$("closeDocuments").onclick=()=>$("documentsDialog").close();
-$("allCV").onclick=()=>showDocuments("cv",newCompanies);
-$("allLetters").onclick=()=>showDocuments("letter",newCompanies);
-$("stagesTab").onclick=()=>switchTab("stages");
-$("routeTab").onclick=()=>switchTab("route");
-$("mapRoute").onclick=()=>{
- switchTab("route");
- $("routePanel").scrollIntoView({behavior:"smooth",block:"start"});
-};
-
-/* Géocodage et calcul routier.
-   Les suggestions sont calculées en temps de détour sur le réseau routier,
-   et non à vol d’oiseau. Aucun horaire d’ouverture n’est supposé. */
-async function getJSON(url){
- const controller=new AbortController();
- const timer=setTimeout(()=>controller.abort(),18000);
- try{
-  const response=await fetch(url,{signal:controller.signal});
-  if(!response.ok)throw Error("Service momentanément indisponible.");
-  return await response.json();
- }finally{clearTimeout(timer)}
-}
-function getPosition(){
- return new Promise((resolve,reject)=>{
-  if(!navigator.geolocation){
-   reject(Error("La géolocalisation n’est pas disponible sur ce navigateur."));return;
+function defaultPitch(company) {
+  if (company.id === "mairie") {
+    return (
+      "Bonjour, je m’appelle Thibault Dessaint, je suis en troisième " +
+      "à Stanislas. Je cherche un stage du 23 au 27 novembre. " +
+      "Est-ce que certains services de la mairie accueillent des élèves ? " +
+      "J’ai mon CV et ma lettre avec moi."
+    );
   }
-  navigator.geolocation.getCurrentPosition(
-   p=>resolve([p.coords.longitude,p.coords.latitude]),
-   ()=>reject(Error("Position indisponible. Sur iPhone, ouvre le site en HTTPS et autorise sa localisation dans Safari.")),
-   {enableHighAccuracy:true,timeout:15000,maximumAge:0}
+
+  return (
+    "Bonjour, je m’appelle Thibault Dessaint, je suis en troisième " +
+    "à Stanislas. Je cherche un stage du 23 au 27 novembre et " +
+    "j’aimerais le faire chez vous. Est-ce que vous prenez des élèves " +
+    "de troisième ? J’ai apporté mon CV et ma lettre."
   );
- });
-}
-async function locate(c){
- if(c.xy)return {xy:c.xy,approx:false};
- if(state.geo[c.id]?.address===c.address)return state.geo[c.id];
- const json=await getJSON(
-  "https://data.geopf.fr/geocodage/search?q="+encodeURIComponent(c.address)+"&limit=1"
- );
- const f=json.features?.[0];
- const xy=f?.geometry?.coordinates;
- const p=f?.properties||{};
- if(!xy||Number(p.score||0)<.5||
-    xy[0]<6.5||xy[0]>7.3||xy[1]<43.25||xy[1]>43.8){
-  throw Error("Adresse non localisée : "+c.name);
- }
- const found={xy,approx:p.type!=="housenumber",address:c.address};
- state.geo[c.id]=found;
- return found;
-}
-const minutes=s=>`${Math.max(1,Math.round(s/60))} min`;
-function routeCost(order,m){
- let last=0,total=0;
- for(const i of order){total+=m[last][i];last=i}
- return total;
 }
 
-/* Solution exacte jusqu’à 10 visites, puis heuristique améliorée.
-   Le trajet reste ouvert : départ GPS, fin à la dernière entreprise. */
-function optimize(ids,m){
- const n=ids.length;
- if(n<=10){
-  const count=1<<n;
-  const dp=Array.from({length:count},()=>new Float64Array(n).fill(Infinity));
-  const parent=Array.from({length:count},()=>new Int16Array(n).fill(-1));
-  ids.forEach((id,j)=>dp[1<<j][j]=m[0][id]);
-  for(let mask=1;mask<count;mask++){
-   for(let j=0;j<n;j++){
-    if(!(mask&(1<<j))||!Number.isFinite(dp[mask][j]))continue;
-    for(let k=0;k<n;k++){
-     if(mask&(1<<k))continue;
-     const next=mask|(1<<k),cost=dp[mask][j]+m[ids[j]][ids[k]];
-     if(cost<dp[next][k]){dp[next][k]=cost;parent[next][k]=j}
-    }
-   }
-  }
-  let mask=count-1,j=0;
-  for(let k=1;k<n;k++)if(dp[mask][k]<dp[mask][j])j=k;
-  const order=[];
-  while(mask){
-   order.push(ids[j]);
-   const prev=parent[mask][j];
-   mask^=1<<j;j=prev;
-  }
-  return order.reverse();
- }
- let todo=[...ids],order=[],last=0;
- while(todo.length){
-  todo.sort((a,b)=>m[last][a]-m[last][b]);
-  const next=todo.shift();order.push(next);last=next;
- }
- let improving=true,passes=0;
- while(improving&&passes++<15){
-  improving=false;
-  for(let a=0;a<n-1;a++)for(let b=a+1;b<n;b++){
-   const trial=[...order.slice(0,a),...order.slice(a,b+1).reverse(),...order.slice(b+1)];
-   if(routeCost(trial,m)+.01<routeCost(order,m)){order=trial;improving=true}
-  }
- }
- return order;
+function switchTab(tab) {
+  const stages = tab === "stages";
+
+  $("stagesPanel").hidden = !stages;
+  $("routePanel").hidden = stages;
+
+  $("stagesTab").classList.toggle("active", stages);
+  $("routeTab").classList.toggle("active", !stages);
+
+  $("stagesTab").setAttribute("aria-current", stages ? "page" : "false");
+  $("routeTab").setAttribute("aria-current", stages ? "false" : "page");
 }
-function detour(id,order,m){
- let best=Infinity;
- for(let at=0;at<=order.length;at++){
-  const before=at===0?0:order[at-1],after=order[at];
-  const extra=after===undefined?m[before][id]:
-   m[before][id]+m[id][after]-m[before][after];
-  best=Math.min(best,extra);
- }
- return Math.max(0,best);
+
+function invalidateRoute() {
+  routeVersion++;
+  $("routeResult").replaceChildren();
+  $("routeMessage").textContent =
+    "Sélection modifiée : recalcule le trajet.";
 }
-$("calculate").onclick=async()=>{
- const wanted=activeCompanies.filter(c=>selected.has(c.id)&&!state.done[c.id]);
- if(!wanted.length){toast("Sélectionne au moins une entreprise.");return}
- const run=++routeVersion;
- $("calculate").disabled=true;
- $("routeResult").replaceChildren();
- $("routeMessage").textContent="Demande de ta position…";
- try{
-  const origin=await getPosition();
-  if(run!==routeVersion)return;
-  const candidates=activeCompanies.filter(c=>!state.done[c.id]);
-  const placed=[],missing=[];
-  for(let i=0;i<candidates.length;i++){
-   if(run!==routeVersion)return;
-   $("routeMessage").textContent=`Localisation des entreprises · ${i+1}/${candidates.length}`;
-   try{
-    const found=await locate(candidates[i]);
-    placed.push({...candidates[i],...found});
-   }catch{missing.push(candidates[i])}
-   await new Promise(r=>setTimeout(r,120));
-  }
-  const missingSelected=missing.filter(c=>selected.has(c.id));
-  if(missingSelected.length)
-   throw Error("Impossible de calculer toutes tes étapes : adresse non localisée pour "+
-    missingSelected.map(c=>c.name).join(", ")+". Ouvre leur fiche pour Waze ou retire-les de la sélection.");
+
+function toggleDone(id) {
+  state.done[id] = !state.done[id];
   save();
-  if(run!==routeVersion)return;
-  $("routeMessage").textContent="Comparaison des trajets routiers…";
-  const points=[origin,...placed.map(c=>c.xy)].map(x=>x.join(",")).join(";");
-  const json=await getJSON("https://router.project-osrm.org/table/v1/driving/"+points+"?annotations=duration");
-  if(json.code!=="Ok"||!json.durations)throw Error("Le calcul routier est indisponible.");
-  const m=json.durations.map(row=>row.map(x=>x===null?Infinity:x));
-  const ids=placed.map((c,i)=>selected.has(c.id)?i+1:null).filter(x=>x!==null);
-  if(ids.some(i=>!Number.isFinite(m[0][i])))
-   throw Error("Une destination ne peut pas être reliée par la route depuis ta position.");
-  const order=optimize(ids,m),total=routeCost(order,m);
-  if(!Number.isFinite(total))throw Error("Aucun parcours complet n’a pu être calculé.");
-  if(run!==routeVersion)return;
-  const suggestions=placed.map((c,i)=>({c,index:i+1}))
-   .filter(x=>!selected.has(x.c.id)&&x.c.kind!=="echange")
-   .map(x=>({...x,extra:detour(x.index,order,m)}))
-   .filter(x=>Number.isFinite(x.extra))
-   .sort((a,b)=>a.extra-b.extra).slice(0,3);
-  let previous=0;
-  const stops=order.map((idx,n)=>{
-   const c=placed[idx-1],duration=m[previous][idx];previous=idx;
-   return `<div class="route-stop">
-    <div class="number">${n+1}</div>
-    <div class="name"><strong>${esc(c.name)}</strong><br>
-    <small>${minutes(duration)} depuis ${n?"l’étape précédente":"ta position"}${c.approx?" · adresse approchée":""}</small></div>
-    <a href="${esc(waze(c))}" target="_blank" rel="noopener">Waze ↗</a>
-   </div>`;
-  }).join("");
-  $("routeMessage").textContent="Calcul effectué à "+new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})+
-   ". Recalcule si tu changes de position ou de sélection.";
-  $("routeResult").innerHTML=`
-  <div class="box">
-   <div class="eyebrow">Parcours proposé</div>
-   <h2>${minutes(total)} de conduite</h2>
-   <p class="notice">${order.length} visites · ${order.length<=10?"Ordre minimal pour les durées calculées":"Ordre amélioré, minimum global non garanti"}.
-   Sans trafic en direct, attente, stationnement ni temps sur place.</p>
-   ${stops}
-   <p class="notice">Waze ouvre chaque destination séparément. Coche la visite terminée puis recalcule depuis ta nouvelle position.</p>
-  </div>
-  ${suggestions.length?`<div class="box"><h3>À ajouter sur ton passage</h3>
-   <p class="notice">Détour estimé en insérant chaque entreprise dans le parcours actuel. Ces suggestions ne sont pas ajoutées automatiquement.</p>
-   ${suggestions.map(x=>`<div class="suggestion">
-    <span><strong>${esc(x.c.name)}</strong><small>Environ +${Math.max(0,Math.round(x.extra/60))} min de conduite${x.c.approx?" · adresse approchée":""}</small></span>
-    <button data-add="${x.c.id}">Ajouter</button></div>`).join("")}
-  </div>`:""}
-  ${missing.length?`<p class="notice">Suggestions indisponibles pour : ${esc(missing.map(c=>c.name).join(", "))}.</p>`:""}
+  invalidateRoute();
+  render();
+}
+
+function card(company, index) {
+  const done = !!state.done[company.id];
+
+  return `
+    <article
+      class="card ${done ? "complete" : ""}"
+      style="--delay:${Math.min(index, 8) * 25}ms">
+
+      ${company.kind === "refus" ? "" : `
+        <button
+          class="check"
+          data-check="${company.id}"
+          aria-label="Marquer la visite chez ${esc(company.name)}"
+          aria-pressed="${done}">
+
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 10l4 4 8-8"></path>
+          </svg>
+        </button>
+      `}
+
+      <button class="company-open" data-open="${company.id}">
+        <strong>${esc(company.name)}</strong>
+        <span>${esc(company.area)}</span>
+        <span>
+          <b class="tag">
+            ${done ? "Visite cochée" : esc(company.status)}
+          </b>
+        </span>
+      </button>
+
+      <span class="chevron" aria-hidden="true">›</span>
+    </article>
   `;
- }catch(error){
-  if(run===routeVersion)
-   $("routeMessage").textContent=error.name==="AbortError"?
-    "Le service ne répond pas. Réessaie plus tard ; les liens Waze restent accessibles dans les fiches.":
-    error.message||"Le trajet n’a pas pu être calculé.";
- }finally{
-  $("calculate").disabled=false;
- }
+}
+
+function render() {
+  $("companyList").innerHTML = activeCompanies.map(card).join("");
+
+  $("archiveList").innerHTML = data
+    .filter(company => company.kind === "refus")
+    .map(card)
+    .join("");
+
+  const done = activeCompanies.filter(
+    company => state.done[company.id]
+  ).length;
+
+  $("progress").textContent =
+    `${done} / ${activeCompanies.length} cochées`;
+
+  $("routeChoices").innerHTML = activeCompanies
+    .filter(company => !state.done[company.id])
+    .map(company => `
+      <label class="select-row">
+        <input
+          type="checkbox"
+          data-select="${company.id}"
+          ${selected.has(company.id) ? "checked" : ""}>
+
+        <span>
+          ${esc(company.name)}
+
+          <small>
+            ${esc(company.area)}
+            ${company.id === "ferrari"
+              ? " · réponse par mail attendue"
+              : ""}
+          </small>
+        </span>
+      </label>
+    `).join("") || "<p>Toutes les visites sont cochées.</p>";
+}
+
+function detail(company) {
+  $("detailHeading").textContent = company.name;
+
+  $("detailBody").innerHTML = `
+    <h3>Statut</h3>
+
+    <span class="tag">${esc(company.status)}</span>
+
+    <p>${esc(company.history)}</p>
+
+    ${state.done[company.id] ? `
+      <p class="small">Visite cochée dans cette application.</p>
+    ` : ""}
+
+    <h3>Ce que tu peux dire</h3>
+
+    <p class="quote">
+      ${esc(company.pitch || defaultPitch(company))}
+    </p>
+
+    ${company.kind === "nouveau" ? `
+      <p class="small">${esc(company.interest)}</p>
+    ` : ""}
+
+    ${company.kind !== "refus" ? `
+      <h3>Si on te pose des questions</h3>
+
+      <p class="small">
+        <strong>Ton âge :</strong>
+        « J’aurai 14 ans au moment du stage. »
+        <br><br>
+
+        <strong>Ce que tu sais faire :</strong>
+        « Je crée des pages web et je suis à l’aise avec les outils
+        numériques. Je peux aider sur des tâches simples. »
+        <br><br>
+
+        <strong>Si le responsable est absent :</strong>
+        « À quel moment puis-je le rappeler ? »
+        <br><br>
+
+        <strong>Si c’est non :</strong>
+        remercie la personne et demande éventuellement si elle connaît
+        une autre structure.
+      </p>
+    ` : ""}
+
+    <h3>Ton CV</h3>
+
+    <div class="actions">
+      ${company.kind === "nouveau" ? `
+        <button
+          class="button primary"
+          data-doc="cv"
+          data-id="${company.id}">
+          Voir / imprimer le CV
+        </button>
+
+        <button
+          class="button secondary"
+          data-doc="letter"
+          data-id="${company.id}">
+          Lettre de motivation
+        </button>
+      ` : `
+        <a
+          class="button primary"
+          target="_blank"
+          rel="noopener"
+          href="https://chatgpt.com/api/library/files/${company.old}/download">
+          Ouvrir le CV existant
+        </a>
+      `}
+    </div>
+
+    ${company.kind !== "nouveau" ? `
+      <p class="notice">
+        Le CV existant s’ouvre avec ton compte ChatGPT.
+      </p>
+    ` : ""}
+
+    <h3>Adresse</h3>
+
+    <p class="small">${esc(company.address)}</p>
+
+    ${company.note ? `
+      <p class="notice">${esc(company.note)}</p>
+    ` : ""}
+
+    <a
+      class="button secondary wide"
+      href="${esc(waze(company))}"
+      target="_blank"
+      rel="noopener">
+      Ouvrir dans Waze ↗
+    </a>
+  `;
+
+  $("detailDialog").showModal();
+}
+
+/* CV et lettres */
+
+function contact() {
+  return `
+    <p class="contact">
+      Fréjus (83600) · 07 64 40 58 13<br>
+      dessaint.contact@gmail.com<br>
+      Mobilité : voiture / bus
+    </p>
+  `;
+}
+
+function photo() {
+  return state.photo ? `
+    <img
+      class="photo"
+      src="${esc(state.photo)}"
+      alt="Portrait de Thibault Dessaint">
+  ` : "";
+}
+
+function cv(company) {
+  return `
+    <article class="doc">
+
+      <div class="doc-header">
+        <div>
+          <h1>THIBAULT<br>DESSAINT</h1>
+
+          <p class="subtitle">STAGE D’OBSERVATION DE 3e</p>
+
+          <p>
+            <strong>Du 23 au 27 novembre 2026</strong><br>
+            14 ans lors du stage
+          </p>
+
+          ${contact()}
+
+          <p class="target">
+            Candidature · ${esc(company.name)}
+          </p>
+        </div>
+
+        ${photo()}
+      </div>
+
+      <h2>Mon profil</h2>
+
+      <p>
+        Je suis en troisième à l’Institut Stanislas de Saint-Raphaël.
+        ${esc(company.interest)}
+      </p>
+
+      <p>
+        Je peux apporter de l’implication, une aisance avec les outils
+        numériques et l’envie d’aider dans les tâches simples qui me
+        seront confiées.
+      </p>
+
+      <h2>Ma scolarité</h2>
+
+      <p>
+        <strong>
+          2026–2027 · 3e B — Institut Stanislas, Saint-Raphaël
+        </strong>
+      </p>
+
+      <p>
+        <strong>2026–2027 · Dual Diploma Academica</strong><br>
+        Préparation d’un diplôme américain en parallèle de ma scolarité
+        française, avec des cours en ligne en anglais.
+      </p>
+
+      <p>
+        <strong>
+          Automne 2025 · British International Academy Marrakech
+        </strong><br>
+        Un trimestre dans une école britannique, avec tous les cours
+        en anglais.
+      </p>
+
+      <div class="columns">
+
+        <div>
+          <h2>Compétences et projets</h2>
+
+          <p>
+            <strong>Projets numériques personnels</strong><br>
+            Création de pages web. Utilisation avancée de l’intelligence
+            artificielle. Intérêt pour les usages concrets du numérique.
+          </p>
+
+          <p>
+            <strong>Sciences et mathématiques</strong><br>
+            Intérêt pour les mathématiques, la technologie et la
+            physique-chimie. 18,75/20 en physique-chimie au dernier
+            trimestre de 4e.
+          </p>
+
+          <p>
+            <strong>Adaptation et sérieux</strong><br>
+            Scolarité à l’étranger, puis retour en France en cours d’année.
+            Tableau d’honneur au deuxième trimestre de 4e.
+          </p>
+
+          <h2>Centres d’intérêt</h2>
+
+          <p>
+            Sciences et technologies, informatique, automobile,
+            voile et tennis.
+          </p>
+        </div>
+
+        <div>
+          <h2>Langues</h2>
+
+          <p>
+            <strong>Français</strong><br>
+            Langue maternelle.
+          </p>
+
+          <p>
+            <strong>Anglais</strong><br>
+            Niveau B1, EF SET 2026.<br>
+            Pratique à Marrakech et avec le Dual Diploma.
+          </p>
+
+          <p>
+            <strong>Espagnol</strong><br>
+            LV2, niveau scolaire.
+          </p>
+
+          <h2>Activités</h2>
+
+          <p>
+            <strong>Voile en groupe compétition</strong><br>
+            ILCA, Club Nautique de Saint-Raphaël, depuis septembre 2026.
+            Deux entraînements par semaine.
+          </p>
+
+          <p>
+            <strong>Tennis</strong><br>
+            Pratique en club et stages pendant les vacances.
+          </p>
+        </div>
+
+      </div>
+    </article>
+  `;
+}
+
+function letter(company) {
+  return `
+    <article class="doc letter">
+
+      <div class="doc-header">
+        <div>
+          <h1>THIBAULT DESSAINT</h1>
+
+          <p class="subtitle">
+            CANDIDATURE · STAGE DE TROISIÈME
+          </p>
+
+          ${contact()}
+        </div>
+      </div>
+
+      <div class="recipient">
+        <strong>${esc(company.name)}</strong><br>
+        ${esc(company.area)}
+      </div>
+
+      <p>
+        <strong>
+          Objet : stage de troisième du 23 au 27 novembre 2026
+        </strong>
+      </p>
+
+      <div class="letter-body">
+        <p>Madame, Monsieur,</p>
+
+        <p>
+          Je m’appelle Thibault Dessaint et je suis en troisième
+          à l’Institut Stanislas de Saint-Raphaël. Je cherche un stage
+          d’observation du 23 au 27 novembre 2026 et j’aimerais le faire
+          chez vous.
+        </p>
+
+        <p>${esc(company.letter)}</p>
+
+        <p>${esc(company.personal)}</p>
+
+        <p>
+          Je peux me déplacer en voiture ou en bus.
+          Je serais content de pouvoir vous rencontrer pour en parler.
+        </p>
+
+        <p>
+          Merci d’avoir pris le temps de lire ma candidature.
+        </p>
+
+        <p>Bonne journée,</p>
+
+        <p class="signature">Thibault Dessaint</p>
+      </div>
+    </article>
+  `;
+}
+
+function showDocuments(type, companies) {
+  if ($("detailDialog").open) {
+    $("detailDialog").close();
+  }
+
+  const make = type === "cv" ? cv : letter;
+
+  printingHTML = companies.map(make).join("");
+
+  $("documentsHeading").textContent =
+    type === "cv" ? "CV de candidature" : "Lettres de motivation";
+
+  $("documentSummary").textContent =
+    `${companies.length} document${companies.length > 1 ? "s" : ""} : ` +
+    companies.map(company => company.name).join(", ") +
+    ". L’aperçu montre le premier document. " +
+    "Le bouton imprime toute la sélection." +
+    (type === "cv" && !state.photo
+      ? " Ajoute ta photo avec le bouton « Photo des CV » avant " +
+        "de préparer les versions finales."
+      : "");
+
+  $("documentPreview").innerHTML = make(companies[0]);
+
+  $("documentsDialog").showModal();
+}
+
+$("printDocuments").onclick = async () => {
+  $("paper").innerHTML = printingHTML;
+
+  const images = [...$("paper").querySelectorAll("img")];
+
+  await Promise.all(
+    images.map(image =>
+      image.decode ? image.decode().catch(() => {}) : Promise.resolve()
+    )
+  );
+
+  $("documentsDialog").close();
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => window.print());
+  });
 };
 
-/* Blocage du pincement dans la page, selon les possibilités du navigateur.
-   Les réglages d’accessibilité du système peuvent garder la priorité. */
-document.addEventListener("gesturestart",e=>e.preventDefault(),{passive:false});
-document.addEventListener("gesturechange",e=>e.preventDefault(),{passive:false});
-document.addEventListener("touchmove",e=>{
- if(e.touches.length>1)e.preventDefault();
-},{passive:false});
+/* Photo commune aux nouveaux CV */
+
+$("photoButton").onclick = () => $("photoFile").click();
+
+$("photoFile").onchange = async event => {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  if (!["image/jpeg", "image/png"].includes(file.type)) {
+    toast("Choisis une photo JPG ou PNG.");
+    event.target.value = "";
+    return;
+  }
+
+  if (file.size > 8 * 1024 * 1024) {
+    toast("Choisis une photo de moins de 8 Mo.");
+    event.target.value = "";
+    return;
+  }
+
+  try {
+    const result = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+
+      reader.readAsDataURL(file);
+    });
+
+    state.photo = result;
+    save();
+
+    toast("Photo ajoutée à tous les nouveaux CV.");
+  } catch {
+    toast("La photo n’a pas pu être chargée.");
+  }
+
+  event.target.value = "";
+};
+
+/* Événements */
+
+document.addEventListener("click", event => {
+  const check = event.target.closest("[data-check]");
+
+  if (check) {
+    toggleDone(check.dataset.check);
+    return;
+  }
+
+  const open = event.target.closest("[data-open]");
+
+  if (open) {
+    detail(byId(open.dataset.open));
+    return;
+  }
+
+  const documentButton = event.target.closest("[data-doc]");
+
+  if (documentButton) {
+    showDocuments(
+      documentButton.dataset.doc,
+      [byId(documentButton.dataset.id)]
+    );
+    return;
+  }
+
+  const add = event.target.closest("[data-add]");
+
+  if (add) {
+    selected.add(add.dataset.add);
+    save();
+    invalidateRoute();
+    render();
+
+    toast("Entreprise ajoutée. Recalcule pour actualiser le trajet.");
+  }
+});
+
+document.addEventListener("change", event => {
+  const id = event.target.dataset.select;
+
+  if (!id) return;
+
+  if (event.target.checked) {
+    selected.add(id);
+  } else {
+    selected.delete(id);
+  }
+
+  save();
+  invalidateRoute();
+});
+
+$("closeDetail").onclick = () => $("detailDialog").close();
+
+$("closeDocuments").onclick = () => $("documentsDialog").close();
+
+$("allCV").onclick = () => showDocuments("cv", newCompanies);
+
+$("allLetters").onclick = () => showDocuments("letter", newCompanies);
+
+$("stagesTab").onclick = () => switchTab("stages");
+
+$("routeTab").onclick = () => switchTab("route");
+
+$("mapRoute").onclick = () => {
+  switchTab("route");
+
+  const reducedMotion =
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  $("routePanel").scrollIntoView({
+    behavior: reducedMotion ? "auto" : "smooth",
+    block: "start"
+  });
+};
+
+/* Services géographiques */
+
+async function getJSON(url) {
+  const controller = new AbortController();
+
+  const timer = setTimeout(() => {
+    controller.abort();
+  }, 18000);
+
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      throw Error("Service momentanément indisponible.");
+    }
+
+    return await response.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function getPosition() {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      reject(Error(
+        "La géolocalisation n’est pas disponible sur ce navigateur."
+      ));
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      position => resolve([
+        position.coords.longitude,
+        position.coords.latitude
+      ]),
+
+      () => reject(Error(
+        "Position indisponible. Sur iPhone, ouvre le site en HTTPS " +
+        "et autorise sa localisation dans Safari."
+      )),
+
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 0
+      }
+    );
+  });
+}
+
+async function locate(company) {
+  if (company.xy) {
+    return {
+      xy: company.xy,
+      approx: false
+    };
+  }
+
+  if (
+    state.geo[company.id] &&
+    state.geo[company.id].address === company.address
+  ) {
+    return state.geo[company.id];
+  }
+
+  const json = await getJSON(
+    "https://data.geopf.fr/geocodage/search?q=" +
+    encodeURIComponent(company.address) +
+    "&limit=1"
+  );
+
+  const feature = json.features?.[0];
+  const coordinates = feature?.geometry?.coordinates;
+  const properties = feature?.properties || {};
+
+  if (
+    !coordinates ||
+    Number(properties.score || 0) < .5 ||
+    coordinates[0] < 6.5 ||
+    coordinates[0] > 7.3 ||
+    coordinates[1] < 43.25 ||
+    coordinates[1] > 43.8
+  ) {
+    throw Error("Adresse non localisée : " + company.name);
+  }
+
+  const found = {
+    xy: coordinates,
+    approx: properties.type !== "housenumber",
+    address: company.address
+  };
+
+  state.geo[company.id] = found;
+
+  return found;
+}
+
+function minutes(seconds) {
+  if (seconds < 30) return "< 1 min";
+  return `${Math.max(1, Math.round(seconds / 60))} min`;
+}
+
+function routeCost(order, matrix) {
+  let last = 0;
+  let total = 0;
+
+  for (const index of order) {
+    total += matrix[last][index];
+    last = index;
+  }
+
+  return total;
+}
+
+/*
+  Solution exacte jusqu’à 10 visites.
+  Au-delà, plus proche voisin puis amélioration par inversions.
+
+  Départ : position GPS.
+  Arrivée : dernière entreprise, sans retour automatique au départ.
+*/
+
+function optimize(ids, matrix) {
+  const length = ids.length;
+
+  if (length <= 10) {
+    const count = 1 << length;
+
+    const costs = Array.from(
+      { length: count },
+      () => new Float64Array(length).fill(Infinity)
+    );
+
+    const parents = Array.from(
+      { length: count },
+      () => new Int16Array(length).fill(-1)
+    );
+
+    ids.forEach((id, index) => {
+      costs[1 << index][index] = matrix[0][id];
+    });
+
+    for (let mask = 1; mask < count; mask++) {
+      for (let current = 0; current < length; current++) {
+        if (
+          !(mask & (1 << current)) ||
+          !Number.isFinite(costs[mask][current])
+        ) {
+          continue;
+        }
+
+        for (let next = 0; next < length; next++) {
+          if (mask & (1 << next)) continue;
+
+          const nextMask = mask | (1 << next);
+
+          const cost =
+            costs[mask][current] +
+            matrix[ids[current]][ids[next]];
+
+          if (cost < costs[nextMask][next]) {
+            costs[nextMask][next] = cost;
+            parents[nextMask][next] = current;
+          }
+        }
+      }
+    }
+
+    let mask = count - 1;
+    let current = 0;
+
+    for (let index = 1; index < length; index++) {
+      if (costs[mask][index] < costs[mask][current]) {
+        current = index;
+      }
+    }
+
+    if (!Number.isFinite(costs[mask][current])) {
+      throw Error("Aucun parcours complet n’a pu être calculé.");
+    }
+
+    const order = [];
+
+    while (mask) {
+      order.push(ids[current]);
+
+      const previous = parents[mask][current];
+
+      mask ^= 1 << current;
+      current = previous;
+    }
+
+    return order.reverse();
+  }
+
+  let remaining = [...ids];
+  let order = [];
+  let last = 0;
+
+  while (remaining.length) {
+    remaining.sort((a, b) => matrix[last][a] - matrix[last][b]);
+
+    const next = remaining.shift();
+
+    order.push(next);
+    last = next;
+  }
+
+  let improving = true;
+  let passes = 0;
+
+  while (improving && passes++ < 15) {
+    improving = false;
+
+    for (let start = 0; start < length - 1; start++) {
+      for (let end = start + 1; end < length; end++) {
+        const trial = [
+          ...order.slice(0, start),
+          ...order.slice(start, end + 1).reverse(),
+          ...order.slice(end + 1)
+        ];
+
+        if (
+          routeCost(trial, matrix) + .01 <
+          routeCost(order, matrix)
+        ) {
+          order = trial;
+          improving = true;
+        }
+      }
+    }
+  }
+
+  return order;
+}
+
+function detour(id, order, matrix) {
+  let best = Infinity;
+
+  for (let position = 0; position <= order.length; position++) {
+    const before = position === 0 ? 0 : order[position - 1];
+    const after = order[position];
+
+    const extra = after === undefined
+      ? matrix[before][id]
+      : matrix[before][id] +
+        matrix[id][after] -
+        matrix[before][after];
+
+    best = Math.min(best, extra);
+  }
+
+  return Math.max(0, best);
+}
+
+/* Calcul du parcours */
+
+$("calculate").onclick = async () => {
+  const wanted = activeCompanies.filter(company =>
+    selected.has(company.id) && !state.done[company.id]
+  );
+
+  if (!wanted.length) {
+    toast("Sélectionne au moins une entreprise.");
+    return;
+  }
+
+  const run = ++routeVersion;
+
+  $("calculate").disabled = true;
+  $("routeResult").replaceChildren();
+  $("routeMessage").textContent = "Demande de ta position…";
+
+  try {
+    const origin = await getPosition();
+
+    if (run !== routeVersion) return;
+
+    const candidates = activeCompanies.filter(
+      company => !state.done[company.id]
+    );
+
+    const placed = [];
+    const missing = [];
+
+    for (let index = 0; index < candidates.length; index++) {
+      if (run !== routeVersion) return;
+
+      $("routeMessage").textContent =
+        `Localisation des entreprises · ${index + 1}/${candidates.length}`;
+
+      try {
+        const found = await locate(candidates[index]);
+
+        placed.push({
+          ...candidates[index],
+          ...found
+        });
+      } catch {
+        missing.push(candidates[index]);
+      }
+
+      await new Promise(resolve => setTimeout(resolve, 120));
+    }
+
+    const missingSelected = missing.filter(company =>
+      selected.has(company.id)
+    );
+
+    if (missingSelected.length) {
+      throw Error(
+        "Impossible de calculer toutes tes étapes : adresse non " +
+        "localisée pour " +
+        missingSelected.map(company => company.name).join(", ") +
+        ". Ouvre leur fiche pour Waze ou retire-les de la sélection."
+      );
+    }
+
+    save();
+
+    if (run !== routeVersion) return;
+
+    $("routeMessage").textContent =
+      "Comparaison des trajets routiers…";
+
+    const points = [
+      origin,
+      ...placed.map(company => company.xy)
+    ].map(coordinates => coordinates.join(",")).join(";");
+
+    const json = await getJSON(
+      "https://router.project-osrm.org/table/v1/driving/" +
+      points +
+      "?annotations=duration"
+    );
+
+    if (json.code !== "Ok" || !json.durations) {
+      throw Error("Le calcul routier est indisponible.");
+    }
+
+    const matrix = json.durations.map(row =>
+      row.map(value => value === null ? Infinity : value)
+    );
+
+    const ids = placed
+      .map((company, index) =>
+        selected.has(company.id) ? index + 1 : null
+      )
+      .filter(index => index !== null);
+
+    if (ids.some(index => !Number.isFinite(matrix[0][index]))) {
+      throw Error(
+        "Une destination ne peut pas être reliée par la route " +
+        "depuis ta position."
+      );
+    }
+
+    const order = optimize(ids, matrix);
+    const total = routeCost(order, matrix);
+
+    if (!Number.isFinite(total)) {
+      throw Error("Aucun parcours complet n’a pu être calculé.");
+    }
+
+    if (run !== routeVersion) return;
+
+    const suggestions = placed
+      .map((company, index) => ({
+        company,
+        index: index + 1
+      }))
+      .filter(item =>
+        !selected.has(item.company.id) &&
+        item.company.kind !== "echange"
+      )
+      .map(item => ({
+        ...item,
+        extra: detour(item.index, order, matrix)
+      }))
+      .filter(item => Number.isFinite(item.extra))
+      .sort((a, b) => a.extra - b.extra)
+      .slice(0, 3);
+
+    let previous = 0;
+
+    const stops = order.map((index, position) => {
+      const company = placed[index - 1];
+      const duration = matrix[previous][index];
+
+      previous = index;
+
+      return `
+        <div class="route-stop">
+          <div class="number">${position + 1}</div>
+
+          <div class="name">
+            <strong>${esc(company.name)}</strong><br>
+
+            <small>
+              ${minutes(duration)} depuis
+              ${position ? "l’étape précédente" : "ta position"}
+              ${company.approx ? " · adresse approchée" : ""}
+            </small>
+          </div>
+
+          <a
+            href="${esc(waze(company))}"
+            target="_blank"
+            rel="noopener">
+            Waze ↗
+          </a>
+        </div>
+      `;
+    }).join("");
+
+    const time = new Date().toLocaleTimeString("fr-FR", {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+    $("routeMessage").textContent =
+      "Calcul effectué à " + time +
+      ". Recalcule si tu changes de position ou de sélection.";
+
+    $("routeResult").innerHTML = `
+      <div class="box">
+        <div class="eyebrow">Parcours proposé</div>
+
+        <h2>${minutes(total)} de conduite</h2>
+
+        <p class="notice">
+          ${order.length} visites ·
+          ${order.length <= 10
+            ? "Ordre minimal pour les durées calculées"
+            : "Ordre amélioré, minimum global non garanti"}.
+          Sans trafic en direct, attente, stationnement ni temps sur place.
+        </p>
+
+        ${stops}
+
+        <p class="notice">
+          Waze ouvre chaque destination séparément.
+          Coche la visite terminée puis recalcule depuis ta nouvelle position.
+        </p>
+      </div>
+
+      ${suggestions.length ? `
+        <div class="box">
+          <h3>À ajouter sur ton passage</h3>
+
+          <p class="notice">
+            Détour estimé en insérant chaque entreprise dans le parcours
+            actuel. Ces suggestions ne sont pas ajoutées automatiquement.
+          </p>
+
+          ${suggestions.map(item => `
+            <div class="suggestion">
+              <span>
+                <strong>${esc(item.company.name)}</strong>
+
+                <small>
+                  Environ +${Math.max(0, Math.round(item.extra / 60))}
+                  min de conduite
+                  ${item.company.approx ? " · adresse approchée" : ""}
+                </small>
+              </span>
+
+              <button data-add="${item.company.id}">
+                Ajouter
+              </button>
+            </div>
+          `).join("")}
+        </div>
+      ` : ""}
+
+      ${missing.length ? `
+        <p class="notice">
+          Suggestions indisponibles pour :
+          ${esc(missing.map(company => company.name).join(", "))}.
+        </p>
+      ` : ""}
+    `;
+
+  } catch (error) {
+    if (run === routeVersion) {
+      $("routeMessage").textContent =
+        error.name === "AbortError"
+          ? "Le service ne répond pas. Réessaie plus tard ; " +
+            "les liens Waze restent accessibles dans les fiches."
+          : error.message || "Le trajet n’a pas pu être calculé.";
+    }
+  } finally {
+    $("calculate").disabled = false;
+  }
+};
+
+/*
+  Limitation du zoom dans la page selon les capacités du navigateur.
+  Les réglages d’accessibilité du système peuvent garder la priorité.
+*/
+
+document.addEventListener(
+  "gesturestart",
+  event => event.preventDefault(),
+  { passive: false }
+);
+
+document.addEventListener(
+  "gesturechange",
+  event => event.preventDefault(),
+  { passive: false }
+);
+
+document.addEventListener(
+  "touchmove",
+  event => {
+    if (event.touches.length > 1) {
+      event.preventDefault();
+    }
+  },
+  { passive: false }
+);
 
 render();
 </script>
+
 </body>
 </html>
